@@ -1,0 +1,76 @@
+$ sudo apt-get update 
+$ sudo apt-get install time
+
+test -> "esto funciona bien"
+
+usuario@debian:~$   time -p cat test
+                    esto funciona bien
+                    real 0.00
+                    user 0.00
+                    sys 0.00
+
+
+usuario@debian:~$   /usr/bin/time -v -p cat test
+                    esto funciona bien
+                    Command being timed: "cat test"
+                    User time (seconds): 0.00
+                    System time (seconds): 0.00
+                    Percent of CPU this job got: 0%
+                    Elapsed (wall clock) time (h:mm:ss or m:ss): 0:00.00
+                    Average shared text size (kbytes): 0
+                    Average unshared data size (kbytes): 0
+                    Average stack size (kbytes): 0
+                    Average total size (kbytes): 0
+                    Maximum resident set size (kbytes): 624
+                    Average resident set size (kbytes): 0
+                    Major (requiring I/O) page faults: 0
+                    Minor (reclaiming a frame) page faults: 199
+                    Voluntary context switches: 1
+                    Involuntary context switches: 2
+                    Swaps: 0
+                    File system inputs: 0
+                    File system outputs: 0
+                    Socket messages sent: 0
+                    Socket messages received: 0
+                    Signals delivered: 0
+                    Page size (bytes): 4096
+                    Exit status: 0
+
+-v -> muestra toda la informacion que contenga de la estrutura rusage
+
+$ sudo sysctl -w vm.drop_caches=3 
+
+usuario@debian:~$   time -p find /usr > /dev/null
+                    real 4.13
+                    user 0.00
+                    sys 0.28
+
+usuario@debian:~$   time -p find /usr > /dev/null
+                    real 0.06
+                    user 0.02
+                    sys 0.02
+
+usuario@debian:~$   time -p dd if=/dev/zero of=/var/tmp/prueba count=100K bs=1K
+                    102400+0 registros leídos
+                    102400+0 registros escritos
+                    104857600 bytes (105 MB) copiados, 0,989726 s, 106 MB/s
+                    real 1.01
+                    user 0.08
+                    sys 0.84
+
+usuario@debian:~$   time -p dd if=/dev/zero of=/var/tmp/prueba count=100K bs=1K oflag=direct
+                    102400+0 registros leídos
+                    102400+0 registros escritos
+                    104857600 bytes (105 MB) copiados, 117,26 s, 894 kB/s
+                    real 117.27
+                    user 0.01
+                    sys 29.09
+
+usuario@debian:~$   time -p dd if=/dev/urandom of=/var/tmp/prueba count=100K bs=1K
+                    102400+0 registros leídos
+                    102400+0 registros escritos
+                    104857600 bytes (105 MB) copiados, 8,67586 s, 12,1 MB/s
+                    real 8.71
+                    user 0.17
+                    sys 7.50
+
