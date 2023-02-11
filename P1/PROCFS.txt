@@ -1,0 +1,293 @@
+man proc
+        /proc  es  un  pseudo-sistema de ficheros que se usa como interfaz para
+       las estructuras de datos del núcleo en  lugar  de  leer  e  interpretar
+       /dev/kmem.  La  mayor  parte  de  este  sistema  de ficheros es de sólo
+       lectura, pero algunos ficheros permiten cambiar variables del núcleo
+
+usuario@debian:~$   cat /proc/cpuinfo
+                    processor	: 0
+                    vendor_id	: GenuineIntel
+                    cpu family	: 6
+                    model		: 61
+                    model name	: Intel(R) Core(TM) i7-5500U CPU @ 2.40GHz
+                    stepping	: 4
+                    microcode	: 0xffffffff
+                    cpu MHz		: 0.000
+                    cache size	: 4096 KB
+                    fpu		: yes
+                    fpu_exception	: yes
+                    cpuid level	: 20
+                    wp		: yes
+                    flags		: fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush mmx fxsr sse sse2 ht syscall nx rdtscp lm constant_tsc up rep_good nopl xtopology nonstop_tsc pni ssse3 cx16 pcid sse4_1 sse4_2 lahf_lm fsgsbase
+                    bogomips	: 15085.56
+                    clflush size	: 64
+                    cache_alignment	: 64
+                    address sizes	: 39 bits physical, 48 bits virtual
+                    power management:
+
+usuario@debian:~$   cat /proc/loadavg
+                    0.00 0.11 0.25 1/174 3013
+
+usuario@debian:~$ cat /proc/meminfo 
+                    MemTotal:        1027008 kB
+                    MemFree:          911004 kB
+                    Buffers:            6948 kB
+                    Cached:            35340 kB
+                    SwapCached:        12884 kB
+                    Active:            24560 kB
+                    Inactive:          59048 kB
+                    Active(anon):      13060 kB
+                    Inactive(anon):    29216 kB
+                    Active(file):      11500 kB
+                    Inactive(file):    29832 kB
+                    Unevictable:           0 kB
+                    Mlocked:               0 kB
+                    SwapTotal:        477180 kB
+                    SwapFree:         429528 kB
+                    Dirty:                 4 kB
+                    Writeback:             0 kB
+                    AnonPages:         34188 kB
+                    Mapped:            11748 kB
+                    Shmem:               956 kB
+                    Slab:              14232 kB
+                    SReclaimable:       5572 kB
+                    SUnreclaim:         8660 kB
+                    KernelStack:        1384 kB
+                    PageTables:         7056 kB
+                    NFS_Unstable:          0 kB
+                    Bounce:                0 kB
+                    WritebackTmp:          0 kB
+                    CommitLimit:      990684 kB
+                    Committed_AS:     243936 kB
+                    VmallocTotal:   34359738367 kB
+                    VmallocUsed:        9396 kB
+                    VmallocChunk:   34359728635 kB
+                    HardwareCorrupted:     0 kB
+                    AnonHugePages:         0 kB
+                    HugePages_Total:       0
+                    HugePages_Free:        0
+                    HugePages_Rsvd:        0
+                    HugePages_Surp:        0
+                    Hugepagesize:       2048 kB
+                    DirectMap4k:       34752 kB
+                    DirectMap2M:     1013760 kB
+
+usuario@debian:~$ cat /proc/vmstat 
+                    nr_free_pages 227751
+                    nr_inactive_anon 7304
+                    nr_active_anon 3265
+                    nr_inactive_file 7459
+                    nr_active_file 2880
+                    nr_unevictable 0
+                    nr_mlock 0
+                    nr_anon_pages 8552
+                    nr_mapped 2949
+                    nr_file_pages 13792
+                    nr_dirty 2
+                    nr_writeback 0
+                    nr_slab_reclaimable 1394
+                    nr_slab_unreclaimable 2168
+                    nr_page_table_pages 1764
+                    nr_kernel_stack 173
+                    nr_unstable 0
+                    nr_bounce 0
+                    nr_vmscan_write 582572
+                    nr_vmscan_immediate_reclaim 2
+                    nr_writeback_temp 0
+                    nr_isolated_anon 0
+                    nr_isolated_file 0
+                    nr_shmem 251
+                    nr_dirtied 73580
+                    nr_written 655934
+                    numa_hit 2460596
+                    numa_miss 0
+                    numa_foreign 0
+                    numa_interleave 9197
+                    numa_local 2460596
+                    numa_other 0
+                    nr_anon_transparent_hugepages 0
+                    nr_dirty_threshold 49732
+                    nr_dirty_background_threshold 24866
+                    pgpgin 1186383
+                    pgpgout 2819868
+                    pswpin 227984
+                    pswpout 582571
+                    pgalloc_dma 14031
+                    pgalloc_dma32 2451001
+                    pgalloc_normal 0
+                    pgalloc_movable 0
+                    pgfree 2692832
+                    pgactivate 497352
+                    pgdeactivate 1205916
+                    pgfault 2499344
+                    pgmajfault 31208
+                    pgrefill_dma 7632
+                    pgrefill_dma32 1205006
+                    pgrefill_normal 0
+                    pgrefill_movable 0
+                    pgsteal_dma 2637
+                    pgsteal_dma32 602939
+                    pgsteal_normal 0
+                    pgsteal_movable 0
+                    pgscan_kswapd_dma 7893
+                    pgscan_kswapd_dma32 1268896
+                    pgscan_kswapd_normal 0
+                    pgscan_kswapd_movable 0
+                    pgscan_direct_dma 4066
+                    pgscan_direct_dma32 587870
+                    pgscan_direct_normal 0
+                    pgscan_direct_movable 0
+                    zone_reclaim_failed 0
+                    pginodesteal 0
+                    slabs_scanned 20480
+                    kswapd_steal 540402
+                    kswapd_inodesteal 392
+                    kswapd_low_wmark_hit_quickly 3
+                    kswapd_high_wmark_hit_quickly 82
+                    kswapd_skip_congestion_wait 2522
+                    pageoutrun 7566
+                    allocstall 1269
+                    pgrotated 582434
+                    compact_blocks_moved 0
+                    compact_pages_moved 0
+                    compact_pagemigrate_failed 0
+                    compact_stall 2
+                    compact_fail 0
+                    compact_success 2
+                    htlb_buddy_alloc_success 0
+                    htlb_buddy_alloc_fail 0
+                    unevictable_pgs_culled 1078
+                    unevictable_pgs_scanned 0
+                    unevictable_pgs_rescued 1576
+                    unevictable_pgs_mlocked 1576
+                    unevictable_pgs_munlocked 1576
+                    unevictable_pgs_cleared 0
+                    unevictable_pgs_stranded 0
+                    unevictable_pgs_mlockfreed 0
+                    thp_fault_alloc 0
+                    thp_fault_fallback 0
+                    thp_collapse_alloc 0
+                    thp_collapse_alloc_failed 0
+                    thp_split 0
+
+usuario@debian:~$ cat /proc/diskstats 
+                    8       0 sda 227196 16552 2375782 1299892 113336 580056 5639992 14278200 0 347028 15578360
+                    8       1 sda1 13504 1621 546810 217548 105829 5060 979424 521712 0 176904 739260
+                    8       2 sda2 2 0 4 0 0 0 0 0 0 0 0
+                    8       5 sda5 213523 14931 1827632 1082140 7495 574996 4660568 13756460 0 237472 14838868
+                    11       0 sr0 0 0 0 0 0 0 0 0 0 0 0
+                    7       0 loop0 0 0 0 0 0 0 0 0 0 0 0
+                    7       1 loop1 0 0 0 0 0 0 0 0 0 0 0
+                    7       2 loop2 0 0 0 0 0 0 0 0 0 0 0
+                    7       3 loop3 0 0 0 0 0 0 0 0 0 0 0
+                    7       4 loop4 0 0 0 0 0 0 0 0 0 0 0
+                    7       5 loop5 0 0 0 0 0 0 0 0 0 0 0
+                    7       6 loop6 0 0 0 0 0 0 0 0 0 0 0
+                    7       7 loop7 0 0 0 0 0 0 0 0 0 0 0
+
+usuario@debian:~$ cat /proc/interrupts 
+                            CPU0       
+                    0:         94   IO-APIC-edge      timer
+                    1:      10126   IO-APIC-edge      i8042
+                    8:          0   IO-APIC-edge      rtc0
+                    9:          0   IO-APIC-fasteoi   acpi
+                    12:       7247   IO-APIC-edge      i8042
+                    14:          0   IO-APIC-edge      ata_piix
+                    15:      92344   IO-APIC-edge      ata_piix
+                    19:       7275   IO-APIC-fasteoi   eth0
+                    20:      41226   IO-APIC-fasteoi   vboxguest
+                    21:     158129   IO-APIC-fasteoi   ahci, snd_intel8x0
+                    22:         57   IO-APIC-fasteoi   ohci_hcd:usb1
+                    NMI:          0   Non-maskable interrupts
+                    LOC:     696178   Local timer interrupts
+                    SPU:          0   Spurious interrupts
+                    PMI:          0   Performance monitoring interrupts
+                    IWI:          0   IRQ work interrupts
+                    RES:          0   Rescheduling interrupts
+                    CAL:          0   Function call interrupts
+                    TLB:          0   TLB shootdowns
+                    TRM:          0   Thermal event interrupts
+                    THR:          0   Threshold APIC interrupts
+                    MCE:          0   Machine check exceptions
+                    MCP:         48   Machine check polls
+                    ERR:          0
+                    MIS:          0
+
+usuario@debian:~$ cat /proc/$$/status
+                    Name:	bash
+                    State:	S (sleeping)
+                    Tgid:	2964
+                    Pid:	2964
+                    PPid:	2286
+                    TracerPid:	0
+                    Uid:	1000	1000	1000	1000
+                    Gid:	1000	1000	1000	1000
+                    FDSize:	256
+                    Groups:	24 25 27 29 30 44 46 1000 
+                    VmPeak:	   19464 kB
+                    VmSize:	   19400 kB
+                    VmLck:	       0 kB
+                    VmPin:	       0 kB
+                    VmHWM:	    2012 kB
+                    VmRSS:	    1220 kB
+                    VmData:	     352 kB
+                    VmStk:	     136 kB
+                    VmExe:	     916 kB
+                    VmLib:	    2024 kB
+                    VmPTE:	      60 kB
+                    VmSwap:	     256 kB
+                    Threads:	1
+                    SigQ:	0/7928
+                    SigPnd:	0000000000000000
+                    ShdPnd:	0000000000000000
+                    SigBlk:	0000000000010000
+                    SigIgn:	0000000000384004
+                    SigCgt:	000000004b813efb
+                    CapInh:	0000000000000000
+                    CapPrm:	0000000000000000
+                    CapEff:	0000000000000000
+                    CapBnd:	ffffffffffffffff
+                    Cpus_allowed:	1
+                    Cpus_allowed_list:	0
+                    Mems_allowed:	00000000,00000001
+                    Mems_allowed_list:	0
+                    voluntary_ctxt_switches:	330
+                    nonvoluntary_ctxt_switches:	19
+
+usuario@debian:~$ cat /proc/$$/sched 
+                    bash (2964, #threads: 1)
+                    ---------------------------------------------------------
+                    se.exec_start                      :      14357236.720198
+                    se.vruntime                        :       1074336.583011
+                    se.sum_exec_runtime                :            61.586938
+                    nr_switches                        :                  367
+                    nr_voluntary_switches              :                  348
+                    nr_involuntary_switches            :                   19
+                    se.load.weight                     :                 1024
+                    policy                             :                    0
+                    prio                               :                  120
+                    clock-delta                        :                    0
+
+usuario@debian:~$ cat /proc/$$/io
+                    rchar: 1307454
+                    wchar: 680619
+                    syscr: 2828
+                    syscw: 549
+                    read_bytes: 811569152
+                    write_bytes: 0
+                    cancelled_write_bytes: 0
+
+usuario@debian:~$ cat /proc/$$/io
+                    rchar: 1317172
+                    wchar: 684220
+                    syscr: 3643
+                    syscw: 1335
+                    read_bytes: 811737088
+                    write_bytes: 0
+                    cancelled_write_bytes: 0
+
+usuario@debian:~$ cat /proc/$$/net/netstat
+                    TcpExt: SyncookiesSent SyncookiesRecv SyncookiesFailed EmbryonicRsts PruneCalled RcvPruned OfoPruned OutOfWindowIcmps LockDroppedIcmps ArpFilter TW TWRecycled TWKilled PAWSPassive PAWSActive PAWSEstab DelayedACKs DelayedACKLocked DelayedACKLost ListenOverflows ListenDrops TCPPrequeued TCPDirectCopyFromBacklog TCPDirectCopyFromPrequeue TCPPrequeueDropped TCPHPHits TCPHPHitsToUser TCPPureAcks TCPHPAcks TCPRenoRecovery TCPSackRecovery TCPSACKReneging TCPFACKReorder TCPSACKReorder TCPRenoReorder TCPTSReorder TCPFullUndo TCPPartialUndo TCPDSACKUndo TCPLossUndo TCPLoss TCPLostRetransmit TCPRenoFailures TCPSackFailures TCPLossFailures TCPFastRetrans TCPForwardRetrans TCPSlowStartRetrans TCPTimeouts TCPRenoRecoveryFail TCPSackRecoveryFail TCPSchedulerFailed TCPRcvCollapsed TCPDSACKOldSent TCPDSACKOfoSent TCPDSACKRecv TCPDSACKOfoRecv TCPAbortOnData TCPAbortOnClose TCPAbortOnMemory TCPAbortOnTimeout TCPAbortOnLinger TCPAbortFailed TCPMemoryPressures TCPSACKDiscard TCPDSACKIgnoredOld TCPDSACKIgnoredNoUndo TCPSpuriousRTOs TCPMD5NotFound TCPMD5Unexpected TCPSackShifted TCPSackMerged TCPSackShiftFallback TCPBacklogDrop TCPMinTTLDrop TCPDeferAcceptDrop IPReversePathFilter TCPTimeWaitOverflow TCPReqQFullDoCookies TCPReqQFullDrop TCPChallengeACK TCPSYNChallenge
+                    TcpExt: 0 0 0 0 0 0 0 0 0 0 2 0 0 0 0 0 2 0 0 0 0 0 0 0 0 51 0 2 34 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+                    IpExt: InNoRoutes InTruncatedPkts InMcastPkts OutMcastPkts InBcastPkts OutBcastPkts InOctets OutOctets InMcastOctets OutMcastOctets InBcastOctets OutBcastOctets
+                    IpExt: 0 0 0 0 0 0 59158 10193 0 0 0 0

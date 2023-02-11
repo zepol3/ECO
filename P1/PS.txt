@@ -1,5 +1,13 @@
 ps -U root -eo euser,pri,%cpu,vsz,%mem --sort -%mem
 
+-U root ->usuario al que vamos a mirar
+
+usuario->euser
+prioridad->pri
+porcentaje de uso del procesador->%cpu
+tamaño de memoria virtual->vsz
+tamaño de memoria fisica->%mem
+
 OUTPUT
     EUSER    PRI %CPU    VSZ %MEM
     root      19  0.7 126988  2.3

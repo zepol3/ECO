@@ -1,0 +1,95 @@
+man top
+    The top program provides a dynamic real-time view of a running system.  It can display system summary information as well as a list
+    of processes or threads currently being managed by the Linux kernel.  The types of system summary information shown and the  types,
+    order  and  size  of  information  displayed  for processes are all user configurable and that configuration can be made persistent
+    across restarts.
+
+
+
+top
+    h
+        Help for Interactive Commands - procps-ng version 3.3.3
+        Window 1:Def: Cumulative mode Off.  System: Delay 3,0 secs; Secure mode Off.
+
+        Z,B       Global: 'Z' change color mappings; 'B' disable/enable bold
+        l,t,m     Toggle Summaries: 'l' load avg; 't' task/cpu stats; 'm' mem info
+        1,I       Toggle SMP view: '1' single/separate states; 'I' Irix/Solaris mode
+        f,F       Manage Fields: add/remove; change order; select sort field
+
+        L,&,<,> . Locate: 'L'/'&' find/again; Move sort column: '<'/'>' left/right
+        R,H,V   . Toggle: 'R' norm/rev sort; 'H' show threads; 'V' forest view
+        c,i,S   . Toggle: 'c' cmd name/line; 'i' idle tasks; 'S' cumulative time
+        x,y     . Toggle highlights: 'x' sort field; 'y' running tasks
+        z,b     . Toggle: 'z' color/mono; 'b' bold/reverse (only if 'x' or 'y')
+        u,U     . Show: 'u' effective user; 'U' real, saved, file or effective user
+        n or #  . Set maximum tasks displayed
+        C,...   . Toggle scroll coordinates msg for: up,down,left,right,home,end
+
+        k,r       Manipulate tasks: 'k' kill; 'r' renice
+        d or s    Set update interval
+        W         Write configuration file
+        q         Quit
+                ( commands shown with '.' require a visible task display window ) 
+        Press 'h' or '?' for help with Windows,
+        any other key to continue 
+    
+    Z-> cambia color de la info mostrada
+        Help for color mapping - procps-ng version 3.3.3
+        current window: 3:Mem
+
+        color - 04:25:44 up 8 days, 50 min,  7 users,  load average:
+        Tasks:  64 total,   2 running,  62 sleeping,   0 stopped,
+        %Cpu(s):  76.5 user,  11.2 system,   0.0 nice,  12.3 idle
+            Nasty Message!   -or-  Input Prompt
+            PID TTY     PR  NI %CPU    TIME+   VIRT SWAP S COMMAND    
+        17284 pts/2    8   0  0.0   0:00.75  1380    0 S /bin/bash   
+            8601 pts/1    7 -10  0.4   0:00.03   916    0 R color -b -z
+        11005 ?        9   0  0.0   0:02.50  2852 1008 S amor -sessi
+        available toggles: B =disable bold globally (Off),
+            z =color/mono (On), b =tasks "bold"/reverse (On)
+
+        Select target as upper case letter:
+        S = Summary Data,  M = Messages/Prompts,
+        H = Column Heads,  T = Task Information
+        Select color as number:
+        0 = black,  1 = red,      2 = green,  3 = yellow,
+        4 = blue,   5 = magenta,  6 = cyan,   7 = white
+
+        Selected: target  T ; color  6 
+        press 'q' to abort changes to window '3:Mem'
+        press 'a' or 'w' to commit & change another, <Enter> to commit and end 
+
+ PID USER      PR  NI  VIRT  RES  SHR S  %CPU %MEM    TIME+  COMMAND
+ 2975 usuario   20   0 1206m 873m  472 R  42,2 87,0   0:14.21 cpu_mem
+   17 root      20   0     0    0    0 R   2,9  0,0   0:02.26 kswapd0
+  PID USER      PR  NI  VIRT  RES  SHR S  %CPU %MEM    TIME+  COMMAND
+ 2975 usuario   20   0 1206m 876m  472 D  34,6 87,4   0:14.56 cpu_mem
+   17 root      20   0     0    0    0 D   0,0  0,0   0:02.26 kswapd0
+  PID USER      PR  NI  VIRT  RES  SHR S  %CPU %MEM    TIME+  COMMAND
+ 2975 usuario   20   0 1206m 873m  472 R  19,9 87,1   0:14.76 cpu_mem
+   17 root      20   0     0    0    0 D   2,0  0,0   0:02.28 kswapd0
+  PID USER      PR  NI  VIRT  RES  SHR S  %CPU %MEM    TIME+  COMMAND
+ 2975 usuario   20   0 1206m 884m  472 R  50,3 88,2   0:15.27 cpu_mem
+   17 root      20   0     0    0    0 D   0,0  0,0   0:02.28 kswapd0
+  PID USER      PR  NI  VIRT  RES  SHR S  %CPU %MEM    TIME+  COMMAND
+ 2975 usuario   20   0 1206m 878m  472 D  54,8 87,6   0:15.83 cpu_mem
+   17 root      20   0     0    0    0 D   3,9  0,0   0:02.32 kswapd0
+  PID USER      PR  NI  VIRT  RES  SHR S  %CPU %MEM    TIME+  COMMAND
+ 2975 usuario   20   0 1206m 874m  472 D   8,9 87,2   0:15.92 cpu_mem
+   17 root      20   0     0    0    0 D   1,0  0,0   0:02.33 kswapd0
+  PID USER      PR  NI  VIRT  RES  SHR S  %CPU %MEM    TIME+  COMMAND
+ 2975 usuario   20   0 1206m 861m  472 R  32,3 85,9   0:16.25 cpu_mem
+   17 root      20   0     0    0    0 R   2,0  0,0   0:02.35 kswapd0
+  PID USER      PR  NI  VIRT  RES  SHR S  %CPU %MEM    TIME+  COMMAND
+ 2975 usuario   20   0 1206m 858m  472 D   6,9 85,6   0:16.32 cpu_mem
+   17 root      20   0     0    0    0 D   0,0  0,0   0:02.35 kswapd0
+  PID USER      PR  NI  VIRT  RES  SHR S  %CPU %MEM    TIME+  COMMAND
+ 2975 usuario   20   0 1206m 861m  472 R  14,9 85,9   0:16.47 cpu_mem
+   17 root      20   0     0    0    0 S   1,0  0,0   0:02.36 kswapd0
+  PID USER      PR  NI  VIRT  RES  SHR S  %CPU %MEM    TIME+  COMMAND
+   17 root      20   0     0    0    0 S   0,0  0,0   0:02.36 kswapd0
+  PID USER      PR  NI  VIRT  RES  SHR S  %CPU %MEM    TIME+  COMMAND
+   17 root      20   0     0    0    0 S   0,0  0,0   0:02.36 kswapd0
+  PID USER      PR  NI  VIRT  RES  SHR S  %CPU %MEM    TIME+  COMMAND
+   17 root      20   0     0    0    0 S   0,0  0,0   0:02.36 kswapd0
+  PID USER      PR  NI  VIRT  RES  SHR S  %CPU %MEM    TIME+  COMMAND
