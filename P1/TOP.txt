@@ -59,37 +59,32 @@ top
         press 'q' to abort changes to window '3:Mem'
         press 'a' or 'w' to commit & change another, <Enter> to commit and end 
 
- PID USER      PR  NI  VIRT  RES  SHR S  %CPU %MEM    TIME+  COMMAND
- 2975 usuario   20   0 1206m 873m  472 R  42,2 87,0   0:14.21 cpu_mem
-   17 root      20   0     0    0    0 R   2,9  0,0   0:02.26 kswapd0
-  PID USER      PR  NI  VIRT  RES  SHR S  %CPU %MEM    TIME+  COMMAND
- 2975 usuario   20   0 1206m 876m  472 D  34,6 87,4   0:14.56 cpu_mem
-   17 root      20   0     0    0    0 D   0,0  0,0   0:02.26 kswapd0
-  PID USER      PR  NI  VIRT  RES  SHR S  %CPU %MEM    TIME+  COMMAND
- 2975 usuario   20   0 1206m 873m  472 R  19,9 87,1   0:14.76 cpu_mem
-   17 root      20   0     0    0    0 D   2,0  0,0   0:02.28 kswapd0
-  PID USER      PR  NI  VIRT  RES  SHR S  %CPU %MEM    TIME+  COMMAND
- 2975 usuario   20   0 1206m 884m  472 R  50,3 88,2   0:15.27 cpu_mem
-   17 root      20   0     0    0    0 D   0,0  0,0   0:02.28 kswapd0
-  PID USER      PR  NI  VIRT  RES  SHR S  %CPU %MEM    TIME+  COMMAND
- 2975 usuario   20   0 1206m 878m  472 D  54,8 87,6   0:15.83 cpu_mem
-   17 root      20   0     0    0    0 D   3,9  0,0   0:02.32 kswapd0
-  PID USER      PR  NI  VIRT  RES  SHR S  %CPU %MEM    TIME+  COMMAND
- 2975 usuario   20   0 1206m 874m  472 D   8,9 87,2   0:15.92 cpu_mem
-   17 root      20   0     0    0    0 D   1,0  0,0   0:02.33 kswapd0
-  PID USER      PR  NI  VIRT  RES  SHR S  %CPU %MEM    TIME+  COMMAND
- 2975 usuario   20   0 1206m 861m  472 R  32,3 85,9   0:16.25 cpu_mem
-   17 root      20   0     0    0    0 R   2,0  0,0   0:02.35 kswapd0
-  PID USER      PR  NI  VIRT  RES  SHR S  %CPU %MEM    TIME+  COMMAND
- 2975 usuario   20   0 1206m 858m  472 D   6,9 85,6   0:16.32 cpu_mem
-   17 root      20   0     0    0    0 D   0,0  0,0   0:02.35 kswapd0
-  PID USER      PR  NI  VIRT  RES  SHR S  %CPU %MEM    TIME+  COMMAND
- 2975 usuario   20   0 1206m 861m  472 R  14,9 85,9   0:16.47 cpu_mem
-   17 root      20   0     0    0    0 S   1,0  0,0   0:02.36 kswapd0
-  PID USER      PR  NI  VIRT  RES  SHR S  %CPU %MEM    TIME+  COMMAND
-   17 root      20   0     0    0    0 S   0,0  0,0   0:02.36 kswapd0
-  PID USER      PR  NI  VIRT  RES  SHR S  %CPU %MEM    TIME+  COMMAND
-   17 root      20   0     0    0    0 S   0,0  0,0   0:02.36 kswapd0
-  PID USER      PR  NI  VIRT  RES  SHR S  %CPU %MEM    TIME+  COMMAND
-   17 root      20   0     0    0    0 S   0,0  0,0   0:02.36 kswapd0
-  PID USER      PR  NI  VIRT  RES  SHR S  %CPU %MEM    TIME+  COMMAND
+top -b -d 1 | egrep "PID|cpu_mem|kswapd0"
+
+      3084 usuario   20   0 2006m 845m  448 R  48,9 84,3   0:09.69 cpu_mem
+        17 root      20   0     0    0    0 D   2,9  0,0   0:12.83 kswapd0
+        PID USER      PR  NI  VIRT  RES  SHR S  %CPU %MEM    TIME+  COMMAND
+      3084 usuario   20   0 2006m 865m  448 D  37,3 86,3   0:10.07 cpu_mem
+        17 root      20   0     0    0    0 D   1,0  0,0   0:12.84 kswapd0
+        PID USER      PR  NI  VIRT  RES  SHR S  %CPU %MEM    TIME+  COMMAND
+      3084 usuario   20   0 2006m 869m  448 R  43,4 86,7   0:10.52 cpu_mem
+        17 root      20   0     0    0    0 R  13,5  0,0   0:12.98 kswapd0
+        PID USER      PR  NI  VIRT  RES  SHR S  %CPU %MEM    TIME+  COMMAND
+      3084 usuario   20   0 2006m 877m  448 R  36,7 87,5   0:10.94 cpu_mem   ->>>>>en esta iteracion se mata al proceso cpu_mem
+        17 root      20   0     0    0    0 D  24,4  0,0   0:13.26 kswapd0
+        PID USER      PR  NI  VIRT  RES  SHR S  %CPU %MEM    TIME+  COMMAND
+      3084 usuario   20   0 2006m 858m  448 R  43,0 85,6   0:11.39 cpu_mem
+        17 root      20   0     0    0    0 D  17,2  0,0   0:13.44 kswapd0
+        PID USER      PR  NI  VIRT  RES  SHR S  %CPU %MEM    TIME+  COMMAND
+        17 root      20   0     0    0    0 S   2,1  0,0   0:13.48 kswapd0
+        PID USER      PR  NI  VIRT  RES  SHR S  %CPU %MEM    TIME+  COMMAND
+        17 root      20   0     0    0    0 S   0,0  0,0   0:13.48 kswapd0
+        PID USER      PR  NI  VIRT  RES  SHR S  %CPU %MEM    TIME+  COMMAND
+        17 root      20   0     0    0    0 S   0,0  0,0   0:13.48 kswapd0
+        PID USER      PR  NI  VIRT  RES  SHR S  %CPU %MEM    TIME+  COMMAND
+        17 root      20   0     0    0    0 S   0,0  0,0   0:13.48 kswapd0
+
+
+en la otra terminal
+    usuario@debian:~$ ./cpu_mem 2000
+        Terminado (killed)

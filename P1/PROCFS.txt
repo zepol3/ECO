@@ -4,7 +4,7 @@ man proc
        /dev/kmem.  La  mayor  parte  de  este  sistema  de ficheros es de sólo
        lectura, pero algunos ficheros permiten cambiar variables del núcleo
 
-usuario@debian:~$   cat /proc/cpuinfo
+usuario@debian:~$   cat /proc/cpuinfo           --->informacion de la cpu         
                     processor	: 0
                     vendor_id	: GenuineIntel
                     cpu family	: 6
@@ -25,10 +25,10 @@ usuario@debian:~$   cat /proc/cpuinfo
                     address sizes	: 39 bits physical, 48 bits virtual
                     power management:
 
-usuario@debian:~$   cat /proc/loadavg
+usuario@debian:~$   cat /proc/loadavg           --->media de carga de la cpu
                     0.00 0.11 0.25 1/174 3013
 
-usuario@debian:~$ cat /proc/meminfo 
+usuario@debian:~$ cat /proc/meminfo             --->informacion de la memoria fisica
                     MemTotal:        1027008 kB
                     MemFree:          911004 kB
                     Buffers:            6948 kB
@@ -72,7 +72,7 @@ usuario@debian:~$ cat /proc/meminfo
                     DirectMap4k:       34752 kB
                     DirectMap2M:     1013760 kB
 
-usuario@debian:~$ cat /proc/vmstat 
+usuario@debian:~$ cat /proc/vmstat              ---> informacion del sistema de ficheros virtual
                     nr_free_pages 227751
                     nr_inactive_anon 7304
                     nr_active_anon 3265
@@ -170,7 +170,7 @@ usuario@debian:~$ cat /proc/vmstat
                     thp_collapse_alloc_failed 0
                     thp_split 0
 
-usuario@debian:~$ cat /proc/diskstats 
+usuario@debian:~$ cat /proc/diskstats                   --->informacion referente a la entrada/salida del sistema
                     8       0 sda 227196 16552 2375782 1299892 113336 580056 5639992 14278200 0 347028 15578360
                     8       1 sda1 13504 1621 546810 217548 105829 5060 979424 521712 0 176904 739260
                     8       2 sda2 2 0 4 0 0 0 0 0 0 0 0
@@ -185,7 +185,7 @@ usuario@debian:~$ cat /proc/diskstats
                     7       6 loop6 0 0 0 0 0 0 0 0 0 0 0
                     7       7 loop7 0 0 0 0 0 0 0 0 0 0 0
 
-usuario@debian:~$ cat /proc/interrupts 
+usuario@debian:~$ cat /proc/interrupts          --->This is used to record the number of interrupts per CPU per IO device. 
                             CPU0       
                     0:         94   IO-APIC-edge      timer
                     1:      10126   IO-APIC-edge      i8042
@@ -213,7 +213,7 @@ usuario@debian:~$ cat /proc/interrupts
                     ERR:          0
                     MIS:          0
 
-usuario@debian:~$ cat /proc/$$/status
+usuario@debian:~$ cat /proc/$$/status           --->Provides information about memory usage, measured in pages. T
                     Name:	bash
                     State:	S (sleeping)
                     Tgid:	2964
@@ -254,7 +254,7 @@ usuario@debian:~$ cat /proc/$$/status
                     voluntary_ctxt_switches:	330
                     nonvoluntary_ctxt_switches:	19
 
-usuario@debian:~$ cat /proc/$$/sched 
+usuario@debian:~$ cat /proc/$$/sched            --->informacion del planificador
                     bash (2964, #threads: 1)
                     ---------------------------------------------------------
                     se.exec_start                      :      14357236.720198
@@ -268,7 +268,7 @@ usuario@debian:~$ cat /proc/$$/sched
                     prio                               :                  120
                     clock-delta                        :                    0
 
-usuario@debian:~$ cat /proc/$$/io
+usuario@debian:~$ cat /proc/$$/io               --->This file contains I/O statistics for the process
                     rchar: 1307454
                     wchar: 680619
                     syscr: 2828
@@ -277,16 +277,7 @@ usuario@debian:~$ cat /proc/$$/io
                     write_bytes: 0
                     cancelled_write_bytes: 0
 
-usuario@debian:~$ cat /proc/$$/io
-                    rchar: 1317172
-                    wchar: 684220
-                    syscr: 3643
-                    syscw: 1335
-                    read_bytes: 811737088
-                    write_bytes: 0
-                    cancelled_write_bytes: 0
-
-usuario@debian:~$ cat /proc/$$/net/netstat
+usuario@debian:~$ cat /proc/$$/net/netstat              --->muestra información de los subsistemas de red en Linux.
                     TcpExt: SyncookiesSent SyncookiesRecv SyncookiesFailed EmbryonicRsts PruneCalled RcvPruned OfoPruned OutOfWindowIcmps LockDroppedIcmps ArpFilter TW TWRecycled TWKilled PAWSPassive PAWSActive PAWSEstab DelayedACKs DelayedACKLocked DelayedACKLost ListenOverflows ListenDrops TCPPrequeued TCPDirectCopyFromBacklog TCPDirectCopyFromPrequeue TCPPrequeueDropped TCPHPHits TCPHPHitsToUser TCPPureAcks TCPHPAcks TCPRenoRecovery TCPSackRecovery TCPSACKReneging TCPFACKReorder TCPSACKReorder TCPRenoReorder TCPTSReorder TCPFullUndo TCPPartialUndo TCPDSACKUndo TCPLossUndo TCPLoss TCPLostRetransmit TCPRenoFailures TCPSackFailures TCPLossFailures TCPFastRetrans TCPForwardRetrans TCPSlowStartRetrans TCPTimeouts TCPRenoRecoveryFail TCPSackRecoveryFail TCPSchedulerFailed TCPRcvCollapsed TCPDSACKOldSent TCPDSACKOfoSent TCPDSACKRecv TCPDSACKOfoRecv TCPAbortOnData TCPAbortOnClose TCPAbortOnMemory TCPAbortOnTimeout TCPAbortOnLinger TCPAbortFailed TCPMemoryPressures TCPSACKDiscard TCPDSACKIgnoredOld TCPDSACKIgnoredNoUndo TCPSpuriousRTOs TCPMD5NotFound TCPMD5Unexpected TCPSackShifted TCPSackMerged TCPSackShiftFallback TCPBacklogDrop TCPMinTTLDrop TCPDeferAcceptDrop IPReversePathFilter TCPTimeWaitOverflow TCPReqQFullDoCookies TCPReqQFullDrop TCPChallengeACK TCPSYNChallenge
                     TcpExt: 0 0 0 0 0 0 0 0 0 0 2 0 0 0 0 0 2 0 0 0 0 0 0 0 0 51 0 2 34 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
                     IpExt: InNoRoutes InTruncatedPkts InMcastPkts OutMcastPkts InBcastPkts OutBcastPkts InOctets OutOctets InMcastOctets OutMcastOctets InBcastOctets OutBcastOctets
