@@ -1,0 +1,154 @@
+MAN NETSTAT
+monitorizar las redes y solucionar determinados problemas que 
+puedan surgir. Ofrece información detallada de las conexiones de nuestro dispositivo a través de la 
+terminal.
+
+
+usuario@debian:~$ netstat -i
+Kernel Interface table
+Iface   MTU Met   RX-OK RX-ERR RX-DRP RX-OVR    TX-OK TX-ERR TX-DRP TX-OVR Flg
+eth0       1500 0       493      0      0 0           278      0      0      0 BMRU
+lo        16436 0         0      0      0 0             0      0      0      0 LRU
+
+
+usuario@debian:~$ netstat -st
+Tcp:
+    4 active connections openings
+    0 passive connection openings
+    0 failed connection attempts
+    0 connection resets received
+    0 connections established
+    479 segments received
+    253 segments send out
+    2 segments retransmited
+    0 bad segments received.
+    0 resets sent
+UdpLite:
+TcpExt:
+    4 TCP sockets finished time wait in fast timer
+    4 delayed acks sent
+    378 packet headers predicted
+    4 acknowledgments not containing data payload received
+    69 predicted acknowledgments
+    1 other TCP timeouts
+IpExt:
+    InOctets: 544994
+    OutOctets: 25351
+
+
+usuario@debian:~$ ip -s -s link
+1: lo: <LOOPBACK,UP,LOWER_UP> mtu 16436 qdisc noqueue state UNKNOWN mode DEFAULT 
+    link/loopback 00:00:00:00:00:00 brd 00:00:00:00:00:00
+    RX: bytes  packets  errors  dropped overrun mcast   
+    0          0        0       0       0       0      
+    RX errors: length  crc     frame   fifo    missed
+               0        0       0       0       0      
+    TX: bytes  packets  errors  dropped carrier collsns 
+    0          0        0       0       0       0      
+    TX errors: aborted fifo    window  heartbeat
+               0        0       0       0      
+2: eth0: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc pfifo_fast state UP mode DEFAULT qlen 1000
+    link/ether 08:00:27:e9:9d:0a brd ff:ff:ff:ff:ff:ff
+    RX: bytes  packets  errors  dropped overrun mcast   
+    552034     493      0       0       0       0      
+    RX errors: length  crc     frame   fifo    missed
+               0        0       0       0       0      
+    TX: bytes  packets  errors  dropped carrier collsns 
+    30367      278      0       0       0       0      
+    TX errors: aborted fifo    window  heartbeat
+               0        0       0       0  
+
+
+usuario@debian:~$ nstat -za Tcp*
+    #kernel
+    TcpActiveOpens                  4                  0.0
+    TcpPassiveOpens                 0                  0.0
+    TcpAttemptFails                 0                  0.0
+    TcpEstabResets                  0                  0.0
+    TcpInSegs                       479                0.0
+    TcpOutSegs                      253                0.0
+    TcpRetransSegs                  2                  0.0
+    TcpInErrs                       0                  0.0
+    TcpOutRsts                      0                  0.0
+    TcpExtSyncookiesSent            0                  0.0
+    TcpExtSyncookiesRecv            0                  0.0
+    TcpExtSyncookiesFailed          0                  0.0
+    TcpExtEmbryonicRsts             0                  0.0
+    TcpExtPruneCalled               0                  0.0
+    TcpExtRcvPruned                 0                  0.0
+    TcpExtOfoPruned                 0                  0.0
+    TcpExtOutOfWindowIcmps          0                  0.0
+    TcpExtLockDroppedIcmps          0                  0.0
+    TcpExtArpFilter                 0                  0.0
+    TcpExtTW                        4                  0.0
+    TcpExtTWRecycled                0                  0.0
+    TcpExtTWKilled                  0                  0.0
+    TcpExtPAWSPassive               0                  0.0
+    TcpExtPAWSActive                0                  0.0
+    TcpExtPAWSEstab                 0                  0.0
+    TcpExtDelayedACKs               4                  0.0
+    TcpExtDelayedACKLocked          0                  0.0
+    TcpExtDelayedACKLost            0                  0.0
+    TcpExtListenOverflows           0                  0.0
+    TcpExtListenDrops               0                  0.0
+    TcpExtTCPPrequeued              0                  0.0
+    TcpExtTCPDirectCopyFromBacklog  0                  0.0
+    TcpExtTCPDirectCopyFromPrequeue 0                  0.0
+    TcpExtTCPPrequeueDropped        0                  0.0
+    TcpExtTCPHPHits                 378                0.0
+    TcpExtTCPHPHitsToUser           0                  0.0
+    TcpExtTCPPureAcks               4                  0.0
+    TcpExtTCPHPAcks                 69                 0.0
+    TcpExtTCPRenoRecovery           0                  0.0
+    TcpExtTCPSackRecovery           0                  0.0
+    TcpExtTCPSACKReneging           0                  0.0
+    TcpExtTCPFACKReorder            0                  0.0
+    TcpExtTCPSACKReorder            0                  0.0
+    TcpExtTCPRenoReorder            0                  0.0
+    TcpExtTCPTSReorder              0                  0.0
+    TcpExtTCPFullUndo               0                  0.0
+    TcpExtTCPPartialUndo            0                  0.0
+    TcpExtTCPDSACKUndo              0                  0.0
+    TcpExtTCPLossUndo               0                  0.0
+    TcpExtTCPLoss                   0                  0.0
+    TcpExtTCPLostRetransmit         0                  0.0
+    TcpExtTCPRenoFailures           0                  0.0
+    TcpExtTCPSackFailures           0                  0.0
+    TcpExtTCPLossFailures           0                  0.0
+    TcpExtTCPFastRetrans            0                  0.0
+    TcpExtTCPForwardRetrans         0                  0.0
+    TcpExtTCPSlowStartRetrans       0                  0.0
+    TcpExtTCPTimeouts               1                  0.0
+    TcpExtTCPRenoRecoveryFail       0                  0.0
+    TcpExtTCPSackRecoveryFail       0                  0.0
+    TcpExtTCPSchedulerFailed        0                  0.0
+    TcpExtTCPRcvCollapsed           0                  0.0
+    TcpExtTCPDSACKOldSent           0                  0.0
+    TcpExtTCPDSACKOfoSent           0                  0.0
+    TcpExtTCPDSACKRecv              0                  0.0
+    TcpExtTCPDSACKOfoRecv           0                  0.0
+    TcpExtTCPAbortOnData            0                  0.0
+    TcpExtTCPAbortOnClose           0                  0.0
+    TcpExtTCPAbortOnMemory          0                  0.0
+    TcpExtTCPAbortOnTimeout         0                  0.0
+    TcpExtTCPAbortOnLinger          0                  0.0
+    TcpExtTCPAbortFailed            0                  0.0
+    TcpExtTCPMemoryPressures        0                  0.0
+    TcpExtTCPSACKDiscard            0                  0.0
+    TcpExtTCPDSACKIgnoredOld        0                  0.0
+    TcpExtTCPDSACKIgnoredNoUndo     0                  0.0
+    TcpExtTCPSpuriousRTOs           0                  0.0
+    TcpExtTCPMD5NotFound            0                  0.0
+    TcpExtTCPMD5Unexpected          0                  0.0
+    TcpExtTCPSackShifted            0                  0.0
+    TcpExtTCPSackMerged             0                  0.0
+    TcpExtTCPSackShiftFallback      0                  0.0
+    TcpExtTCPBacklogDrop            0                  0.0
+    TcpExtTCPMinTTLDrop             0                  0.0
+    TcpExtTCPDeferAcceptDrop        0                  0.0
+    TcpExtIPReversePathFilter       0                  0.0
+    TcpExtTCPTimeWaitOverflow       0                  0.0
+    TcpExtTCPReqQFullDoCookies      0                  0.0
+    TcpExtTCPReqQFullDrop           0                  0.0
+    TcpExtTCPChallengeACK           0                  0.0
+    TcpExtTCPSYNChallenge           0                  0.0
