@@ -1,0 +1,148 @@
+VMSTAT(8)
+    vmstat reports information about processes, memory, paging, block IO, traps, disks and cpu activity.
+
+    The  first  report produced gives averages since the last reboot.  Additional reports give information on a sampling period
+    of length delay.  The process and memory reports are instantaneous in either case.
+
+    Procs
+       r: The number of processes waiting for run time.
+       b: The number of processes in uninterruptible sleep.
+
+   Memory
+       swpd: the amount of virtual memory used.
+       free: the amount of idle memory.
+       buff: the amount of memory used as buffers.
+       cache: the amount of memory used as cache.
+       inact: the amount of inactive memory.  (-a option)
+       active: the amount of active memory.  (-a option)
+
+   Swap
+       si: Amount of memory swapped in from disk (/s).
+       so: Amount of memory swapped to disk (/s).
+
+   IO
+       bi: Blocks received from a block device (blocks/s).
+       bo: Blocks sent to a block device (blocks/s).
+
+   System
+       in: The number of interrupts per second, including the clock.
+       cs: The number of context switches per second.
+
+    CPU
+       These are percentages of total CPU time.
+       us: Time spent running non-kernel code.  (user time, including nice time)
+       sy: Time spent running kernel code.  (system time)
+       id: Time spent idle.  Prior to Linux 2.5.41, this includes IO-wait time.
+       wa: Time spent waiting for IO.  Prior to Linux 2.5.41, included in idle.
+       st: Time stolen from a virtual machine.  Prior to Linux 2.6.11, unknown.
+
+
+$find / &> /dev/null        --->Intensivo en memoria. Lee mucho, no escribe
+    usuario@debian:~$ vmstat        --->durante la ejecucion
+    procs -----------memory---------- ---swap-- -----io---- -system-- ----cpu----
+    r  b   swpd   free   buff  cache   si   so    bi    bo   in   cs us sy id wa
+    0  0  51684 858104  31448  42096  101  240   125   267   77  148  1 13 84  2
+    usuario@debian:~$ vmstat        --->al acabar la ejecucion
+    procs -----------memory---------- ---swap-- -----io---- -system-- ----cpu----
+    r  b   swpd   free   buff  cache   si   so    bi    bo   in   cs us sy id wa
+    0  0  51668 858344  31448  42120   99  235   123   261   76  146  1 12 85  2
+
+$sudo dd if=/dev/sda of=/dev/null count=1M 
+--->dd copia bytes, los está leyendo de los dispositivos de sistema (periféricos…) sda es un disco a y lo está 
+    escribiendo en un dispositivo de kernell (null) que lo descarta. Tiempo de usuario bajo… tiempo de sistema 
+    aumenta y wait también (porque espera a que se lean los bloques)
+
+    usuario@debian:~$ vmstat        --->durante la ejecucion
+    procs -----------memory---------- ---swap-- -----io---- -system-- ----cpu----
+    r  b   swpd   free   buff  cache   si   so    bi    bo   in   cs us sy id wa
+    1  1  51416 745588 184044  14540   97  230   157   256   75  145  1 12 85  2
+    usuario@debian:~$ vmstat        --->durante la ejecucion
+    procs -----------memory---------- ---swap-- -----io---- -system-- ----cpu----
+    r  b   swpd   free   buff  cache   si   so    bi    bo   in   cs us sy id wa
+    2  0  51416 578560 346348  14536   97  230   165   256   75  145  1 12 85  2
+    usuario@debian:~$ vmstat        --->durante la ejecucion
+    procs -----------memory---------- ---swap-- -----io---- -system-- ----cpu----
+    r  b   swpd   free   buff  cache   si   so    bi    bo   in   cs us sy id wa
+    2  1  51416 519784 403308  14620   97  230   168   256   75  145  1 12 85  2
+    usuario@debian:~$ vmstat        --->durante la ejecucion
+    procs -----------memory---------- ---swap-- -----io---- -system-- ----cpu----
+    r  b   swpd   free   buff  cache   si   so    bi    bo   in   cs us sy id wa
+    2  0  51416 464480 457068  14636   97  230   171   256   75  145  1 12 85  2
+    usuario@debian:~$ vmstat        --->durante la ejecucion
+    procs -----------memory---------- ---swap-- -----io---- -system-- ----cpu----
+    r  b   swpd   free   buff  cache   si   so    bi    bo   in   cs us sy id wa
+    0  0  51416 394832 524916  14928   97  230   174   256   75  145  1 12 85  2
+    usuario@debian:~$ vmstat        --->al acabar la ejecucion
+    procs -----------memory---------- ---swap-- -----io---- -system-- ----cpu----
+    r  b   swpd   free   buff  cache   si   so    bi    bo   in   cs us sy id wa
+    0  0  51416 394840 524928  14928   96  227   172   252   75  144  1 12 85  2
+
+$ dd if=/dev/zero of=/var/tmp/prueba count=1M; sleep 10; rm /var/tmp/prueba 
+--->copia los valores de un lado al directorio tmp, cuando acabo duermo 10 y despues elimino el directorio tmp
+    usuario@debian:~$ vmstat        --->durante la ejecucion
+    procs -----------memory---------- ---swap-- -----io---- -system-- ----cpu----
+    r  b   swpd   free   buff  cache   si   so    bi    bo   in   cs us sy id wa
+    1  0  51416 610568    220 329428   95  225   171   266   74  144  1 12 85  2
+    usuario@debian:~$ vmstat        --->durante la ejecucion
+    procs -----------memory---------- ---swap-- -----io---- -system-- ----cpu----
+    r  b   swpd   free   buff  cache   si   so    bi    bo   in   cs us sy id wa
+    0  1  51416 394692    236 538564   95  225   171   277   74  144  1 12 85  2
+    usuario@debian:~$ vmstat        --->durante la ejecucion
+    procs -----------memory---------- ---swap-- -----io---- -system-- ----cpu----
+    r  b   swpd   free   buff  cache   si   so    bi    bo   in   cs us sy id wa
+    0  0  51416 394932    384 538608   95  225   171   277   74  144  1 12 85  2
+    usuario@debian:~$ vmstat        --->al acabar la ejecucion
+    procs -----------memory---------- ---swap-- -----io---- -system-- ----cpu----
+    r  b   swpd   free   buff  cache   si   so    bi    bo   in   cs us sy id wa
+    0  0  51396 934984    412  14380   95  225   170   276   74  143  1 12 85  2
+
+$ ./cpu_mem 1200
+    usuario@debian:~$ vmstat
+    procs -----------memory---------- ---swap-- -----io---- -system-- ----cpu----
+    r  b   swpd   free   buff  cache   si   so    bi    bo   in   cs us sy id wa
+    1  3 208516  49044    412  14532   95  232   170   284   74  143  1 12 85  2
+    usuario@debian:~$ vmstat
+    procs -----------memory---------- ---swap-- -----io---- -system-- ----cpu----
+    r  b   swpd   free   buff  cache   si   so    bi    bo   in   cs us sy id wa
+    1  1 325068  83252    420  14544   95  242   170   294   74  143  1 12 85  2
+    usuario@debian:~$ vmstat
+    procs -----------memory---------- ---swap-- -----io---- -system-- ----cpu----
+    r  b   swpd   free   buff  cache   si   so    bi    bo   in   cs us sy id wa
+    1  1 317532  72588    420  14556   95  242   171   294   74  143  1 12 85  2
+    usuario@debian:~$ vmstat
+    procs -----------memory---------- ---swap-- -----io---- -system-- ----cpu----
+    r  b   swpd   free   buff  cache   si   so    bi    bo   in   cs us sy id wa
+    3  1 310320  62796    420  14548   96  242   171   294   74  144  1 12 85  2
+    usuario@debian:~$ vmstat
+    procs -----------memory---------- ---swap-- -----io---- -system-- ----cpu----
+    r  b   swpd   free   buff  cache   si   so    bi    bo   in   cs us sy id wa
+    2  1 303904  67196    420  14532   96  242   171   294   74  144  1 12 85  2
+    usuario@debian:~$ vmstat
+    procs -----------memory---------- ---swap-- -----io---- -system-- ----cpu----
+    r  b   swpd   free   buff  cache   si   so    bi    bo   in   cs us sy id wa
+    0  1 292208  71280    420  14548   96  242   172   294   74  144  1 12 85  2
+    usuario@debian:~$ vmstat
+    procs -----------memory---------- ---swap-- -----io---- -system-- ----cpu----
+    r  b   swpd   free   buff  cache   si   so    bi    bo   in   cs us sy id wa
+    1  1 285584  62228    420  14552   97  242   172   294   74  144  1 12 85  2
+    usuario@debian:~$ vmstat
+    procs -----------memory---------- ---swap-- -----io---- -system-- ----cpu----
+    r  b   swpd   free   buff  cache   si   so    bi    bo   in   cs us sy id wa
+    0  2 258344  53680    420  14548   97  242   172   294   74  144  1 12 85  2
+    usuario@debian:~$ vmstat
+    procs -----------memory---------- ---swap-- -----io---- -system-- ----cpu----
+    r  b   swpd   free   buff  cache   si   so    bi    bo   in   cs us sy id wa
+    4  1 265708  57640    420  14548   97  243   173   294   74  144  1 12 85  2
+    usuario@debian:~$ vmstat
+    procs -----------memory---------- ---swap-- -----io---- -system-- ----cpu----
+    r  b   swpd   free   buff  cache   si   so    bi    bo   in   cs us sy id wa
+    2  2 269260  57764    420  14528   98  243   173   295   74  144  1 12 85  2
+    usuario@debian:~$ vmstat
+    procs -----------memory---------- ---swap-- -----io---- -system-- ----cpu----
+    r  b   swpd   free   buff  cache   si   so    bi    bo   in   cs us sy id wa
+    2  2 274620  59880    420  14560   98  244   173   295   74  144  1 12 85  2
+    usuario@debian:~$ vmstat
+    procs -----------memory---------- ---swap-- -----io---- -system-- ----cpu----
+    r  b   swpd   free   buff  cache   si   so    bi    bo   in   cs us sy id wa
+    1  1 274716  58508    420  14560   98  244   174   295   74  144  1 12 85  2
+

@@ -1,0 +1,173 @@
+usuario@debian:~$ cat /etc/default/sysstat          --->Recoge la configuracion por defecto
+    #
+    # Default settings for /etc/init.d/sysstat, /etc/cron.d/sysstat
+    # and /etc/cron.daily/sysstat files
+    #
+
+    # Should sadc collect system activity informations? Valid values
+    # are "true" and "false". Please do not put other values, they
+    # will be overwritten by debconf!
+    ENABLED="false"
+
+
+usuario@debian:~$ cat /etc/cron.d/sysstat           --->Recoge variable que se ejecuten en funcion de la configuracion
+    # The first element of the path is a directory where the debian-sa1
+    # script is located
+    PATH=/usr/lib/sysstat:/usr/sbin:/usr/sbin:/usr/bin:/sbin:/bin
+
+    # Activity reports every 10 minutes everyday
+    5-55/10 * * * * root command -v debian-sa1 > /dev/null && debian-sa1 1 1
+
+    # Additional run at 23:59 to rotate the statistics file
+    59 23 * * * root command -v debian-sa1 > /dev/null && debian-sa1 60 2
+
+
+usuario@debian:~$ cat /etc/cron.daily/sysstat       --->Recoge un resumen de la información diaria de las entradas de cron.d
+    #!/bin/sh
+    # Generate a daily summary of process accounting.  Since this will probably
+    # get kicked off in the morning, it is run against the previous day data.
+
+    #  our configuration file
+    DEFAULT=/etc/default/sysstat
+    #  default settings, overriden in the above file
+    ENABLED=false
+
+    [ ! -x /usr/lib/sysstat/sa2 ] && exit 0
+
+    # read our config
+    [ -r "$DEFAULT" ] && . "$DEFAULT" 
+
+    [ "$ENABLED" = "true" ]  || exit 0
+
+    exec /usr/lib/sysstat/sa2 -A
+
+
+usuario@debian:~$ cat /etc/init.d/sysstat           --->Recoge de forma regular la información del rendimiento del sistema
+    #! /bin/sh
+    # vim:ft=sh:et
+    ### BEGIN INIT INFO
+    # Provides:          sysstat
+    # Required-Start:    $remote_fs $local_fs $syslog
+    # Required-Stop:
+    # Default-Start:     2 3 4 5
+    # Default-Stop:
+    # Short-Description: Start/stop sysstat's sadc
+    # Description:       Sysstat contains system performance tools for Linux
+    #                    The init file runs the sadc command in order to write
+    #                    the "LINUX RESTART" mark to the daily data file
+    ### END INIT INFO
+
+    PATH=/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin
+    DAEMON=/usr/lib/sysstat/debian-sa1
+    NAME=sadc
+    DESC="the system activity data collector"
+
+    test -f "$DAEMON" || exit 0
+    umask 022
+
+    # our configuration file
+    DEFAULT=/etc/default/sysstat
+
+    # default settings...
+    ENABLED="false"
+    SA1_OPTIONS=""
+
+    # ...overriden in the configuration file
+    test -r "$DEFAULT" && . "$DEFAULT"
+
+    set -e 
+    status=0
+
+    . /lib/lsb/init-functions
+
+    case "$1" in
+    start|restart|reload|force-reload)
+            if [ "$ENABLED" = "true" ] ; then
+                    log_daemon_msg "Starting $DESC" "$NAME"
+                    start-stop-daemon --start --quiet --exec $DAEMON -- --boot || status=$?
+                    log_end_msg $status
+            fi
+            ;;
+    stop)
+            ;;
+    status)
+            if [ "$ENABLED" = "true" ] ; then
+                    log_success_msg "sadc cron jobs are enabled"
+                    exit 0
+            else
+                    log_failure_msg "sadc cron jobs are disabled"
+                    exit 3
+            fi
+            ;;
+    *)
+            log_failure_msg "Usage: $0 {start|stop|restart|reload|force-reload|status}"
+            exit 1
+            ;;
+    esac
+
+    exit $status
+
+
+MAN SAR
+    Informacion detallada sobre todo el sistema con datos recogidos en el momento actual o datos historicos.
+OPTIONS
+    -b     Report I/O and transfer rate statistics.
+    -B     Report paging statistics.
+    -d     Report  activity for each block device.  When data are displayed, the device specification dev m-n is generally used
+            ( DEV column).  m is the major number of the device and n its minor number.  Device names may also be pretty-printed
+            if  option  -p  is used (see below).  Note that disk activity depends on sadc options "-S DISK" and "-S XDISK" to be
+            collected.
+    -n { keyword [,...] | ALL }
+            Report network statistics.
+    -w     Report task creation and system switching activity.
+    -r     Report memory utilization statistics.
+    -u [ ALL ]
+              Report  CPU utilization. The ALL keyword indicates that all the CPU fields should be displayed.
+
+
+
+sar 10 3
+usuario@debian:~$ sar 10 3
+    Linux 3.2.0-4-amd64 (debian) 	18/02/23 	_x86_64_	(1 CPU)
+
+    13:27:49        CPU     %user     %nice   %system   %iowait    %steal     %idle
+    13:27:59        all      0,00      0,00      0,61      0,20      0,00     99,19
+    13:28:09        all      0,00      0,00      0,91      0,30      0,00     98,79
+    13:28:19        all      0,00      0,00      0,81      1,21      0,00     97,99
+    Media:          all      0,00      0,00      0,77      0,57      0,00     98,66
+
+$ find / &> /dev/null
+    Linux 3.2.0-4-amd64 (debian) 	18/02/23 	_x86_64_	(1 CPU)
+
+    13:31:15        CPU     %user     %nice   %system   %iowait    %steal     %idle
+    13:31:25        all      0,00      0,00     40,62     56,29      0,00      3,09
+    13:31:35        all      0,00      0,00      0,70      0,40      0,00     98,89
+    13:31:45        all      0,00      0,00      0,90      0,00      0,00     99,10
+    Media:          all      0,00      0,00     13,26     17,74      0,00     69,00
+
+$dd if=/dev/zero of=/var/tmp/prueba count=1M
+    Linux 3.2.0-4-amd64 (debian) 	18/02/23 	_x86_64_	(1 CPU)
+
+    13:35:52        CPU     %user     %nice   %system   %iowait    %steal     %idle
+    13:36:02        all      0,65      0,00     13,22      3,90      0,00     82,23
+    13:36:12        all      0,00      0,00      0,50      0,20      0,00     99,29
+    13:36:22        all      0,00      0,00      0,90      0,00      0,00     99,10
+    Media:          all      0,21      0,00      4,67      1,31      0,00     93,81
+
+$./cpu_mem
+Linux 3.2.0-4-amd64 (debian) 	18/02/23 	_x86_64_	(1 CPU)
+
+13:41:27        CPU     %user     %nice   %system   %iowait    %steal     %idle
+13:41:37        all     31,81      0,00     45,38     22,80      0,00      0,00
+13:41:47        all      0,21      0,00     75,41     24,38      0,00      0,00
+13:41:57        all      0,00      0,00     81,80     18,20      0,00      0,00
+Media:          all     10,12      0,00     68,12     21,76      0,00      0,00
+
+
+Linux 3.2.0-4-amd64 (debian) 	18/02/23 	_x86_64_	(1 CPU)
+
+13:44:23     pgpgin/s pgpgout/s   fault/s  majflt/s  pgfree/s pgscank/s pgscand/s pgsteal/s    %vmeff
+13:44:33        50,87  39740,43  25160,11      1,85   6464,67  11888,48  16118,04   6155,00     21,98
+13:44:43      4662,42   3286,20   2435,67    147,03   2262,95   3295,22     43,42   2148,41     64,35
+13:44:53      6660,38   9994,55   2677,88    210,48   2618,55   5057,02      0,00   2552,10     50,47
+Media:        3832,67  17468,61   9941,90    121,09   3756,14   6699,54   5280,36   3594,14     30,00
