@@ -164,6 +164,7 @@ Linux 3.2.0-4-amd64 (debian) 	18/02/23 	_x86_64_	(1 CPU)
 Media:          all     10,12      0,00     68,12     21,76      0,00      0,00
 
 
+sar -B 10 3
 Linux 3.2.0-4-amd64 (debian) 	18/02/23 	_x86_64_	(1 CPU)
 
 13:44:23     pgpgin/s pgpgout/s   fault/s  majflt/s  pgfree/s pgscank/s pgscand/s pgsteal/s    %vmeff
