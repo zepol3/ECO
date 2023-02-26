@@ -36,3 +36,52 @@ real	0m3.444s
 user	0m3.220s
 sys	0m0.020s
 
+
+
+
+
+
+
+
+usuario@debian:~/Descargas$ gcc -lprofiler -g -o edges_g1 edges.c
+usuario@debian:~/Descargas$ CPUPROFILE=/tmp/edges.prof ./edges-google-pprof-g img.pgm out.pgm
+bash: ./edges-google-pprof-g: No existe el fichero o el directorio
+usuario@debian:~/Descargas$ CPUPROFILE=/tmp/edges.prof ./edges_g1 img.pgm out.pgm
+PROFILE: interrupts/evictions/bytes = 242/153/12080
+
+
+usuario@debian:~/Descargas$ google-pprof --text --lines edges_g1 /tmp/edges.prof
+Using local file edges_g1.
+Using local file /tmp/edges.prof.
+Removing killpg from all stack traces.
+Total: 242 samples
+     161  66.5%  66.5%      168  69.4% gaussian /home/usuario/Descargas/edges.c:126
+      44  18.2%  84.7%       48  19.8% laplacian /home/usuario/Descargas/edges.c:166
+      12   5.0%  89.7%       18   7.4% gaussian /home/usuario/Descargas/edges.c:125
+       5   2.1%  91.7%        8   3.3% laplacian /home/usuario/Descargas/edges.c:165
+       3   1.2%  93.0%        3   1.2% _IO_getc ??:0
+       2   0.8%  93.8%        2   0.8% gaussian /home/usuario/Descargas/edges.c:113
+       2   0.8%  94.6%        2   0.8% gaussian /home/usuario/Descargas/edges.c:129
+       2   0.8%  95.5%        3   1.2% laplacian /home/usuario/Descargas/edges.c:164
+       2   0.8%  96.3%        2   0.8% laplacian /home/usuario/Descargas/edges.c:169
+       2   0.8%  97.1%        2   0.8% laplacian /home/usuario/Descargas/edges.c:171
+       1   0.4%  97.5%        1   0.4% __write ??:0
+       1   0.4%  97.9%        1   0.4% _init ??:0
+       1   0.4%  98.3%        2   0.8% fputc ??:0
+       1   0.4%  98.8%        1   0.4% gaussian /home/usuario/Descargas/edges.c:122
+       1   0.4%  99.2%        3   1.2% gaussian /home/usuario/Descargas/edges.c:124
+       1   0.4%  99.6%        4   1.7% load_image_file /home/usuario/Descargas/edges.c:66
+       1   0.4% 100.0%        3   1.2% save_image_file /home/usuario/Descargas/edges.c:88
+       0   0.0% 100.0%        1   0.4% _IO_do_write ??:0
+       0   0.0% 100.0%        1   0.4% _IO_file_overflow ??:0
+       0   0.0% 100.0%        1   0.4% _IO_file_seek ??:0
+       0   0.0% 100.0%        1   0.4% _IO_file_write ??:0
+       0   0.0% 100.0%      241  99.6% __libc_start_main ??:0
+       0   0.0% 100.0%      241  99.6% _start ??:0
+       0   0.0% 100.0%       90  37.2% edges /home/usuario/Descargas/edges.c:181
+       0   0.0% 100.0%       89  36.8% edges /home/usuario/Descargas/edges.c:182
+       0   0.0% 100.0%       55  22.7% edges /home/usuario/Descargas/edges.c:183
+       0   0.0% 100.0%        1   0.4% laplacian /home/usuario/Descargas/edges.c:170
+       0   0.0% 100.0%        4   1.7% main /home/usuario/Descargas/edges.c:195
+       0   0.0% 100.0%      234  96.7% main /home/usuario/Descargas/edges.c:197
+       0   0.0% 100.0%        3   1.2% main /home/usuario/Descargas/edges.c:199
