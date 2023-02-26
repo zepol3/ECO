@@ -28,3 +28,11 @@ Total: 267 samples
        0   0.0% 100.0%      261  97.8% edges
        0   0.0% 100.0%      267 100.0% main
 
+
+usuario@debian:~/Descargas$ gcc -o edges_g edges.c -Wl,--no-as-needed -lprofiler
+usuario@debian:~/Descargas$ time ./edges_g img.pgm out.pgm
+
+real	0m3.444s
+user	0m3.220s
+sys	0m0.020s
+
