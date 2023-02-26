@@ -1,0 +1,30 @@
+Prints specified cpu- or heap-profile
+
+
+
+usuario@debian:~/Descargas$ gcc -o edges_g edges.c -Wl,--no-as-needed -lprofiler
+usuario@debian:~/Descargas$ CPUPROFILE=/tmp/prof CPUPROFILE_FREQUENCY=200 ./edges_g
+     USAGE: ./edges_g in.pgm out.pgm
+
+PROFILE: interrupts/evictions/bytes = 0/0/64
+usuario@debian:~/Descargas$ google-pprof --text edges_g /tmp/edges.prof
+Using local file edges_g.
+Using local file /tmp/edges.prof.
+Removing killpg from all stack traces.
+Total: 267 samples
+     190  71.2%  71.2%      190  71.2% gaussian
+      71  26.6%  97.8%       71  26.6% laplacian
+       2   0.7%  98.5%        2   0.7% _IO_getc
+       1   0.4%  98.9%        1   0.4% __write
+       1   0.4%  99.3%        2   0.7% fputc
+       1   0.4%  99.6%        3   1.1% load_image_file
+       1   0.4% 100.0%        3   1.1% save_image_file
+       0   0.0% 100.0%        1   0.4% _IO_do_write
+       0   0.0% 100.0%        1   0.4% _IO_file_overflow
+       0   0.0% 100.0%        1   0.4% _IO_file_seek
+       0   0.0% 100.0%        1   0.4% _IO_file_write
+       0   0.0% 100.0%      267 100.0% __libc_start_main
+       0   0.0% 100.0%      267 100.0% _start
+       0   0.0% 100.0%      261  97.8% edges
+       0   0.0% 100.0%      267 100.0% main
+
