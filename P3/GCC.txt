@@ -1,0 +1,41 @@
+usuario@debian:~/Descargas$ gcc -o edges0 edges.c 
+usuario@debian:~/Descargas$ time ./edges0 img.pgm out.pgm
+
+real	0m3.641s
+user	0m3.276s
+sys	0m0.204s
+
+descargas$ gcc -o edges0 -o0 edges.c 
+usuario@debian:~/Descargas$ time ./edges0 img.pgm out.pgm
+
+real	0m3.791s
+user	0m3.528s
+sys	0m0.064s
+
+usuario@debian:~/Descargas$ gcc -o edges0 -o1 edges.c 
+usuario@debian:~/Descargas$ time ./edges0 img.pgm out.pgm
+
+real	0m3.397s
+user	0m3.168s
+sys	0m0.052s
+
+
+
+usuario@debian:~/Descargas$ gcc -fprofile-generate -o edges -O1 edges.c
+usuario@debian:~/Descargas$ gcc -fprofile-generate -o edges2 -O2 edges.c
+usuario@debian:~/Descargas$ gcc -fprofile-generate -o edges3 -O3 edges.c
+usuario@debian:~/Descargas$ time ./edges img.pgm out1.pgm
+
+real	0m1.930s
+user	0m1.804s
+sys	0m0.028s
+usuario@debian:~/Descargas$ time ./edges2 img.pgm out2.pgm
+
+real	0m1.927s
+user	0m1.812s
+sys	0m0.016s
+usuario@debian:~/Descargas$ time ./edges3 img.pgm out3.pgm
+
+real	0m1.648s
+user	0m1.500s
+sys	0m0.016s
