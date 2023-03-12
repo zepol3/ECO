@@ -37,3 +37,45 @@ Initial import into OpenBenchmarking.org
 Test Suites Containing This Test
 pts/single-threaded Single-Threaded 
 
+
+
+
+
+
+CPU / Processor Suite
+
+Suite Description:  This test suite contains tests designed to test the system's CPU / processor. This test suite is deprecated and not maintained due to the collection of test profiles now so diverse that such a large test suite is not really practical. Use another suite(s) more narrowily focused on your interests/needs.
+
+Run Identifier:     pts/cpu-1.2.4                   
+Suite Version:      1.2.4                           
+Maintainer:         Michael Larabel                 
+Suite Type:         Processor                       
+Unique Tests:       16                              
+Contained Tests:    
+                    Rodinia                         Test: OpenMP CFD Solver                                 
+                    Rodinia                         Test: OpenMP LavaMD                                     
+                    NAMD                                                                                    
+                    Stockfish                                                                               
+                    x264                                                                                    
+                    x265                            Video Input: Bosphorus 1080p                            
+                    x265                            Video Input: Bosphorus 4K                               
+                    Kvazaar                         Video Input: Bosphorus 1080p - Video Preset: Slow       
+                    Kvazaar                         Video Input: Bosphorus 1080p - Video Preset: Medium     
+                    Kvazaar                         Video Input: Bosphorus 1080p - Video Preset: Very Fast  
+                    Kvazaar                         Video Input: Bosphorus 1080p - Video Preset: Ultra Fast 
+                    Kvazaar                         Video Input: Bosphorus 4K - Video Preset: Slow          
+                    Kvazaar                         Video Input: Bosphorus 4K - Video Preset: Medium        
+                    Kvazaar                         Video Input: Bosphorus 4K - Video Preset: Very Fast     
+                    Kvazaar                         Video Input: Bosphorus 4K - Video Preset: Ultra Fast    
+                    7-Zip Compression                                                                       
+                    Blender                         Blend File: Barbershop - Compute: CPU-Only              
+                    asmFish                                                                                 
+                    Timed Linux Kernel Compilation                                                          
+                    Timed GCC Compilation                                                                   
+                    Radiance Benchmark              Test: Serial                                            
+                    Radiance Benchmark              Test: SMP Parallel                                      
+                    OpenSSL                                                                                 
+                    ctx_clock                                                                               
+                    Sysbench                        Test: CPU                                               
+                    POV-Ray                                                                                 
+
