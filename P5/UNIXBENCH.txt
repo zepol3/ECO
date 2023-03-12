@@ -1,0 +1,578 @@
+usuario@debian:~/byte-unixbench-5.1.3/UnixBench$ ./Run -i 3
+make all
+make[1]: Entering directory `/home/usuario/byte-unixbench-5.1.3/UnixBench'
+Checking distribution of files
+./pgms  exists
+./src  exists
+./testdir  exists
+./tmp  exists
+./results  exists
+make[1]: Leaving directory `/home/usuario/byte-unixbench-5.1.3/UnixBench'
+
+locale: Cannot set LC_CTYPE to default locale: No such file or directory
+locale: Cannot set LC_MESSAGES to default locale: No such file or directory
+locale: Cannot set LC_ALL to default locale: No such file or directory
+locale: Cannot set LC_CTYPE to default locale: No such file or directory
+locale: Cannot set LC_MESSAGES to default locale: No such file or directory
+locale: Cannot set LC_ALL to default locale: No such file or directory
+sh: 1: 3dinfo: not found
+sh: 1: runlevel: not found
+
+   #    #  #    #  #  #    #          #####   ######  #    #   ####   #    #
+   #    #  ##   #  #   #  #           #    #  #       ##   #  #    #  #    #
+   #    #  # #  #  #    ##            #####   #####   # #  #  #       ######
+   #    #  #  # #  #    ##            #    #  #       #  # #  #       #    #
+   #    #  #   ##  #   #  #           #    #  #       #   ##  #    #  #    #
+    ####   #    #  #  #    #          #####   ######  #    #   ####   #    #
+
+   Version 5.1.3                      Based on the Byte Magazine Unix Benchmark
+
+   Multi-CPU version                  Version 5 revisions by Ian Smith,
+                                      Sunnyvale, CA, USA
+   January 13, 2011                   johantheghost at yahoo period com
+
+1 x Dhrystone 2 using register variables  1 2 3
+
+1 x Double-Precision Whetstone  1 2 3
+
+1 x Execl Throughput  1
+
+1 x File Copy 1024 bufsize 2000 maxblocks  1
+
+1 x File Copy 256 bufsize 500 maxblocks  1
+
+1 x File Copy 4096 bufsize 8000 maxblocks  1
+
+1 x Pipe Throughput  1 2 3
+
+1 x Pipe-based Context Switching  1 2 3
+
+1 x Process Creation  1
+
+1 x System Call Overhead  1 2 3
+
+1 x Shell Scripts (1 concurrent)  1
+
+
+1 x Shell Scripts (8 concurrent)  1
+
+========================================================================
+BYTE UNIX Benchmarks (Version 5.1.3)
+
+System: debian: GNU/Linux
+OS: GNU/Linux -- 3.2.0-4-amd64 -- #1 SMP Debian 3.2.63-2
+Machine: x86_64 (unknown)
+Language: en_US.utf8 (charmap="ANSI_X3.4-1968", collate="ANSI_X3.4-1968")
+CPU 0: Intel(R) Core(TM) i7-5500U CPU @ 2.40GHz (14458.9 bogomips)
+        Hyper-Threading, x86-64, MMX, Physical Address Ext, SYSENTER/SYSEXIT, SYSCALL/SYSRET
+14:37:19 up 41 min,  2 users,  load average: 0.00, 0.01, 0.05; runlevel 
+
+------------------------------------------------------------------------
+Benchmark Run: dom mar 12 2023 14:37:19 - 14:46:20
+1 CPU in system; running 1 parallel copy of tests
+
+Dhrystone 2 using register variables       29014880.5 lps   (10.0 s, 2 samples)
+Double-Precision Whetstone                     4379.3 MWIPS (9.8 s, 2 samples)
+Execl Throughput                                797.3 lps   (29.1 s, 1 samples)
+File Copy 1024 bufsize 2000 maxblocks        894973.0 KBps  (30.0 s, 1 samples)
+File Copy 256 bufsize 500 maxblocks          303744.0 KBps  (30.0 s, 1 samples)
+File Copy 4096 bufsize 8000 maxblocks       2016536.0 KBps  (30.0 s, 1 samples)
+Pipe Throughput                             2131145.4 lps   (10.0 s, 2 samples)
+Pipe-based Context Switching                 487847.4 lps   (10.0 s, 2 samples)
+Process Creation                               7130.6 lps   (30.0 s, 1 samples)
+Shell Scripts (1 concurrent)                   2999.4 lpm   (60.0 s, 1 samples)
+Shell Scripts (8 concurrent)                    428.7 lpm   (60.0 s, 1 samples)
+System Call Overhead                        4034045.0 lps   (10.0 s, 2 samples)
+
+System Benchmarks Index Values               BASELINE       RESULT    INDEX
+Dhrystone 2 using register variables         116700.0   29014880.5   2486.3
+Double-Precision Whetstone                       55.0       4379.3    796.2
+Execl Throughput                                 43.0        797.3    185.4
+File Copy 1024 bufsize 2000 maxblocks          3960.0     894973.0   2260.0
+File Copy 256 bufsize 500 maxblocks            1655.0     303744.0   1835.3
+File Copy 4096 bufsize 8000 maxblocks          5800.0    2016536.0   3476.8
+Pipe Throughput                               12440.0    2131145.4   1713.1
+Pipe-based Context Switching                   4000.0     487847.4   1219.6
+Process Creation                                126.0       7130.6    565.9
+Shell Scripts (1 concurrent)                     42.4       2999.4    707.4
+Shell Scripts (8 concurrent)                      6.0        428.7    714.5
+System Call Overhead                          15000.0    4034045.0   2689.4
+                                                                   ========
+System Benchmarks Index Score                                        1195.3
+
+
+Dhrystone es un pequeño benchmark sintético que pretende ser representativo de programación entera de sistemas. Está basado en estadísticas publicadas sobre uso de particularidades de los lenguajes de programación, sistemas operativos, compiladores, editores, etc
+Used to measure and compare the performance of computers.
+
+Whetstone es un pequeño benchmark científico diseñado en el Laboratorio Nacional de Física de Inglaterra. Se lo considera uno de los padres de los benchmarks sintéticos por ser el primero diseñado específicamente con ese fin. Hoy en día forma parte de muchos benchmarks actuales.
+Used to measure the speed and efficiency of floating-point operations.
+
+Used to measure the number of execl calls that can be performed per second.
+
+
+The IB (Byte Index) is used to represent an absolute offset within the PST file with respect to the beginning of the file. The IB is a simple unsigned integer value and is 64 bits in Unicode versions and 32 bits in ANSI versions.
+
+
+usuario@debian:~/byte-unixbench-5.1.3/UnixBench/results$ cat debian-2023-03-12-01.log 
+
+########################################################
+Dhrystone 2 using register variables -- 1 copy
+==> "/home/usuario/byte-unixbench-5.1.3/UnixBench/pgms/dhry2reg" 10 2>&1 >> "/home/usuario/byte-unixbench-5.1.3/UnixBench/results/debian-2023-03-12-01.log"
+
+#### Pass 1
+
+
+# COUNT0: 291017604
+# COUNT1: 1
+# COUNT2: lps
+# elapsed: 10.007226
+# pid: 2510
+# status: 0
+
+#### Pass 2
+
+
+# COUNT0: 288382730
+# COUNT1: 1
+# COUNT2: lps
+# elapsed: 10.005119
+# pid: 2519
+# status: 0
+
+#### Pass 3
+
+# COUNT0: 289845539
+# COUNT1: 1
+# COUNT2: lps
+# elapsed: 10.012225
+# pid: 2528
+# status: 0
+
+*Dump score:  288382730.0
+Count score:  289845539.0
+Count score:  291017604.0
+
+>>>> Results of 1 copy
+>>>> score: 29014880.5085868
+>>>> time: 10.0097255
+>>>> iterations: 2
+
+
+########################################################
+Double-Precision Whetstone -- 1 copy
+==> "/home/usuario/byte-unixbench-5.1.3/UnixBench/pgms/whetstone-double"  2>&1 >> "/home/usuario/byte-unixbench-5.1.3/UnixBench/results/debian-2023-03-12-01.log"
+
+#### Pass 1
+
+Calibrate
+       0.00 Seconds          1   Passes (x 100)
+       0.01 Seconds          5   Passes (x 100)
+       0.05 Seconds         25   Passes (x 100)
+       0.29 Seconds        125   Passes (x 100)
+       1.46 Seconds        625   Passes (x 100)
+
+Use 4291  passes (x 100)
+
+          Double Precision C/C++ Whetstone Benchmark
+
+Loop content                  Result              MFLOPS      MOPS   Seconds
+
+N1 floating point     -1.12398255667391744      1481.691              0.056
+N2 floating point     -1.12187079889292241      1427.413              0.404
+N3 if then else        1.00000000000000000                6530.770    0.068
+N4 fixed point        12.00000000000000000                   0.000    0.000
+N5 sin,cos etc.        0.49902937281518261                  90.606    3.940
+N6 floating point      0.99999987890802811       875.348              2.644
+N7 assignments         3.00000000000000000                5357.625    0.148
+N8 exp,sqrt etc.       0.75100163018453692                  62.155    2.568
+
+MWIPS                                           4366.002              9.828
+
+
+# COUNT0: 4366.002
+# COUNT1: 0
+# COUNT2: MWIPS
+# TIME: 9.828
+# elapsed: 12.463481
+# pid: 2537
+# status: 0
+
+#### Pass 2
+
+Calibrate
+       0.00 Seconds          1   Passes (x 100)
+       0.01 Seconds          5   Passes (x 100)
+       0.05 Seconds         25   Passes (x 100)
+       0.29 Seconds        125   Passes (x 100)
+       1.45 Seconds        625   Passes (x 100)
+
+Use 4301  passes (x 100)
+
+          Double Precision C/C++ Whetstone Benchmark
+
+Loop content                  Result              MFLOPS      MOPS   Seconds
+
+N1 floating point     -1.12398255667391744      1474.536              0.056
+N2 floating point     -1.12187079889292241      1416.713              0.408
+N3 if then else        1.00000000000000000                7948.602    0.056
+N4 fixed point        12.00000000000000000                   0.000    0.000
+N5 sin,cos etc.        0.49902937281518261                  88.833    4.028
+N6 floating point      0.99999987890802811       877.388              2.644
+N7 assignments         3.00000000000000000                5228.767    0.152
+N8 exp,sqrt etc.       0.75100163018453692                  62.203    2.572
+
+MWIPS                                           4337.163              9.917
+
+
+# COUNT0: 4337.163
+# COUNT1: 0
+# COUNT2: MWIPS
+# TIME: 9.917
+# elapsed: 12.570044
+# pid: 2546
+# status: 0
+
+#### Pass 3
+
+Calibrate
+       0.00 Seconds          1   Passes (x 100)
+       0.00 Seconds          5   Passes (x 100)
+       0.05 Seconds         25   Passes (x 100)
+       0.29 Seconds        125   Passes (x 100)
+       1.46 Seconds        625   Passes (x 100)
+
+Use 4291  passes (x 100)
+
+          Double Precision C/C++ Whetstone Benchmark
+
+Loop content                  Result              MFLOPS      MOPS   Seconds
+
+N1 floating point     -1.12398255667391744      1373.033              0.060
+N2 floating point     -1.12187079889292241      1347.369              0.428
+N3 if then else        1.00000000000000000                6938.918    0.064
+N4 fixed point        12.00000000000000000                   0.000    0.000
+N5 sin,cos etc.        0.49902937281518261                  92.676    3.852
+N6 floating point      0.99999987890802811       874.026              2.648
+N7 assignments         3.00000000000000000                5216.644    0.152
+N8 exp,sqrt etc.       0.75100163018453692                  62.252    2.564
+
+MWIPS                                           4392.641              9.769
+
+
+# COUNT0: 4392.641
+# COUNT1: 0
+# COUNT2: MWIPS
+# TIME: 9.769
+# elapsed: 12.397735
+# pid: 2555
+# status: 0
+
+*Dump score:       4337.2
+Count score:       4366.0
+Count score:       4392.6
+
+>>>> Results of 1 copy
+>>>> score: 4379.30124463732
+>>>> time: 9.7985
+>>>> iterations: 2
+
+########################################################
+Execl Throughput -- 1 copy
+==> "/home/usuario/byte-unixbench-5.1.3/UnixBench/pgms/execl" 30 2>&1 >> "/home/usuario/byte-unixbench-5.1.3/UnixBench/results/debian-2023-03-12-01.log"
+
+#### Pass 1
+
+
+# COUNT0: 23200
+# COUNT1: 1
+# COUNT2: lps
+# elapsed: 29.098610
+# pid: 2564
+# status: 0
+
+Count score:      23200.0
+
+>>>> Results of 1 copy
+>>>> score: 797.288942667708
+>>>> time: 29.09861
+>>>> iterations: 1
+
+
+########################################################
+File Copy 1024 bufsize 2000 maxblocks -- 1 copy
+==> "/home/usuario/byte-unixbench-5.1.3/UnixBench/pgms/fstime" -c -t 30 -d "/home/usuario/byte-unixbench-5.1.3/UnixBench/tmp" -b 1024 -m 2000 2>&1 >> "/home/usuario/byte-unixbench-5.1.3/UnixBench/results/debian-2023-03-12-01.log"
+
+#### Pass 1
+
+Write done: 11376000 in 2.0099, score 1415009
+Read done: 27983548 in 2.0040, score 3490939
+Copy done: 107399816 in 30.0008, score 894973
+
+# COUNT0: 894973
+# COUNT1: 0
+# COUNT2: KBps
+# TIME: 30.0
+# elapsed: 45.402182
+# pid: 2573
+# status: 0
+
+Count score:     894973.0
+
+>>>> Results of 1 copy
+>>>> score: 894973
+>>>> time: 30
+>>>> iterations: 1
+
+
+########################################################
+File Copy 256 bufsize 500 maxblocks -- 1 copy
+==> "/home/usuario/byte-unixbench-5.1.3/UnixBench/pgms/fstime" -c -t 30 -d "/home/usuario/byte-unixbench-5.1.3/UnixBench/tmp" -b 256 -m 500 2>&1 >> "/home/usuario/byte-unixbench-5.1.3/UnixBench/results/debian-2023-03-12-01.log"
+
+#### Pass 1
+
+Write done: 3576000 in 2.0302, score 440357
+Read done: 9312748 in 2.0065, score 1160309
+Copy done: 36452612 in 30.0027, score 303744
+
+# COUNT0: 303744
+# COUNT1: 0
+# COUNT2: KBps
+# TIME: 30.0
+# elapsed: 45.156091
+# pid: 2582
+
+# status: 0
+
+Count score:     303744.0
+
+>>>> Results of 1 copy
+>>>> score: 303744
+>>>> time: 30
+>>>> iterations: 1
+
+
+########################################################
+File Copy 4096 bufsize 8000 maxblocks -- 1 copy
+==> "/home/usuario/byte-unixbench-5.1.3/UnixBench/pgms/fstime" -c -t 30 -d "/home/usuario/byte-unixbench-5.1.3/UnixBench/tmp" -b 4096 -m 8000 2>&1 >> "/home/usuario/byte-unixbench-5.1.3/UnixBench/results/debian-2023-03-12-01.log"
+
+#### Pass 1
+
+Write done: 30944000 in 2.0046, score 3859075
+Read done: 45042784 in 2.0067, score 5611501
+Copy done: 241996096 in 30.0015, score 2016536
+
+# COUNT0: 2016536
+# COUNT1: 0
+# COUNT2: KBps
+# TIME: 30.0
+# elapsed: 45.136169
+# pid: 2591
+# status: 0
+
+Count score:    2016536.0
+
+>>>> Results of 1 copy
+>>>> score: 2016536
+>>>> time: 30
+>>>> iterations: 1
+
+########################################################
+Pipe Throughput -- 1 copy
+==> "/home/usuario/byte-unixbench-5.1.3/UnixBench/pgms/pipe" 10 2>&1 >> "/home/usuario/byte-unixbench-5.1.3/UnixBench/results/debian-2023-03-12-01.log"
+
+#### Pass 1
+
+
+# COUNT0: 19214027
+# COUNT1: 1
+# COUNT2: lps
+# elapsed: 10.005239
+# pid: 2600
+# status: 0
+
+#### Pass 2
+
+
+# COUNT0: 21108715
+# COUNT1: 1
+# COUNT2: lps
+# elapsed: 10.006437
+# pid: 2613
+# status: 0
+
+#### Pass 3
+
+
+# COUNT0: 21551282
+# COUNT1: 1
+# COUNT2: lps
+# elapsed: 10.009889
+# pid: 2623
+# status: 0
+
+*Dump score:   19214027.0
+Count score:   21108715.0
+Count score:   21551282.0
+
+>>>> Results of 1 copy
+>>>> score: 2131145.4416924
+>>>> time: 10.008163
+>>>> iterations: 2
+
+
+########################################################
+Pipe-based Context Switching -- 1 copy
+==> "/home/usuario/byte-unixbench-5.1.3/UnixBench/pgms/context1" 10 2>&1 >> "/home/usuario/byte-unixbench-5.1.3/UnixBench/results/debian-2023-03-12-01.log"
+
+#### Pass 1
+
+
+# COUNT0: 4893812
+# COUNT1: 1
+# COUNT2: lps
+# elapsed: 10.021350
+# pid: 2632
+# status: 0
+
+#### Pass 2
+
+
+# COUNT0: 4883693
+# COUNT1: 1
+# COUNT2: lps
+# elapsed: 10.020779
+# pid: 2642
+# status: 0
+
+#### Pass 3
+
+
+# COUNT0: 4776014
+# COUNT1: 1
+# COUNT2: lps
+# elapsed: 10.006809
+# pid: 2652
+# status: 0
+
+*Dump score:    4776014.0
+Count score:    4883693.0
+Count score:    4893812.0
+
+>>>> Results of 1 copy
+>>>> score: 487847.362311437
+>>>> time: 10.0210645
+>>>> iterations: 2
+
+
+########################################################
+Process Creation -- 1 copy
+==> "/home/usuario/byte-unixbench-5.1.3/UnixBench/pgms/spawn" 30 2>&1 >> "/home/usuario/byte-unixbench-5.1.3/UnixBench/results/debian-2023-03-12-01.log"
+
+#### Pass 1
+
+
+# COUNT0: 213948
+# COUNT1: 1
+# COUNT2: lps
+# elapsed: 30.004321
+# pid: 2662
+# status: 0
+
+Count score:     213948.0
+
+>>>> Results of 1 copy
+>>>> score: 7130.57295980802
+>>>> time: 30.004321
+>>>> iterations: 1
+
+
+########################################################
+System Call Overhead -- 1 copy
+==> "/home/usuario/byte-unixbench-5.1.3/UnixBench/pgms/syscall" 10 2>&1 >> "/home/usuario/byte-unixbench-5.1.3/UnixBench/results/debian-2023-03-12-01.log"
+
+#### Pass 1
+
+
+# COUNT0: 40214121
+# COUNT1: 1
+# COUNT2: lps
+# elapsed: 10.007124
+# pid: 22700
+# status: 0
+
+#### Pass 2
+
+
+# COUNT0: 40603813
+# COUNT1: 1
+# COUNT2: lps
+# elapsed: 10.026622
+# pid: 22709
+# status: 0
+
+#### Pass 3
+
+
+# COUNT0: 39344399
+# COUNT1: 1
+# COUNT2: lps
+# elapsed: 10.004969
+# pid: 22718
+# status: 0
+
+*Dump score:   39344399.0
+Count score:   40214121.0
+Count score:   40603813.0
+
+>>>> Results of 1 copy
+>>>> score: 4034044.99350473
+>>>> time: 10.016873
+>>>> iterations: 2
+
+
+########################################################
+Shell Scripts (1 concurrent) -- 1 copy
+==> "/home/usuario/byte-unixbench-5.1.3/UnixBench/pgms/looper" 60 "/home/usuario/byte-unixbench-5.1.3/UnixBench/pgms/multi.sh" 1 2>&1 >> "/home/usuario/byte-unixbench-5.1.3/UnixBench/results/debian-2023-03-12-01.log"
+
+#### Pass 1
+
+
+# COUNT0: 3000
+# COUNT1: 60
+# COUNT2: lpm
+# elapsed: 60.012811
+# pid: 22727
+# status: 0
+
+Count score:       3000.0
+
+>>>> Results of 1 copy
+>>>> score: 2999.3595867389
+>>>> time: 60.012811
+>>>> iterations: 1
+
+
+########################################################
+Shell Scripts (8 concurrent) -- 1 copy
+==> "/home/usuario/byte-unixbench-5.1.3/UnixBench/pgms/looper" 60 "/home/usuario/byte-unixbench-5.1.3/UnixBench/pgms/multi.sh" 8 2>&1 >> "/home/usuario/byte-unixbench-5.1.3/UnixBench/results/debian-2023-03-12-01.log"
+
+#### Pass 1
+
+
+# COUNT0: 429
+# COUNT1: 60
+# COUNT2: lpm
+# elapsed: 60.042634
+# pid: 20499
+# status: 0
+
+Count score:        429.0
+
+>>>> Results of 1 copy
+>>>> score: 428.695383350437
+>>>> time: 60.042634
+>>>> iterations: 1
+
+
+
+
