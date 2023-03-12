@@ -1,0 +1,78 @@
+Iozone is a filesystem benchmark tool. The benchmark generates and measures a variety of file operations.  Iozone has  been  ported
+       to  many  machines and runs under many operating systems.  This document will cover the many different types of operations that are
+       tested as well as coverage of all of the command line options.
+
+       Iozone is useful for determining a broad filesystem analysis of a vendor's computer platform. The benchmark tests file I/O  perfor‐
+       mance for the following operations.
+
+                 Read, write, re-read, re-write, read backwards, read strided, fread, fwrite, random read/write, pread/pwrite variants
+
+
+
+usuario@debian:~/iozone3_489$ src/current/iozone -s 100m
+	Iozone: Performance Test of File I/O
+	        Version $Revision: 3.488 $
+		Compiled for 64 bit mode.
+		Build: linux 
+
+	Contributors:William Norcott, Don Capps, Isom Crawford, Kirby Collins
+	             Al Slater, Scott Rhine, Mike Wisner, Ken Goss
+	             Steve Landherr, Brad Smith, Mark Kelly, Dr. Alain CYR,
+	             Randy Dunlap, Mark Montague, Dan Million, Gavin Brebner,
+	             Jean-Marc Zucconi, Jeff Blomberg, Benny Halevy, Dave Boone,
+	             Erik Habbinga, Kris Strecker, Walter Wong, Joshua Root,
+	             Fabrice Bacchella, Zhenghua Xue, Qin Li, Darren Sawyer,
+	             Vangel Bojaxhi, Ben England, Vikentsi Lapa,
+	             Alexey Skidanov, Sudhir Kumar.
+
+	Run began: Sun Mar 12 16:53:27 2023
+
+	File size set to 102400 kB
+	Command line used: src/current/iozone -s 100m
+	Output is in kBytes/sec
+	Time Resolution = 0.000041 seconds.
+	Processor cache size set to 1024 kBytes.
+	Processor cache line size set to 32 bytes.
+	File stride size set to 17 * record size.
+                                                              random    random     bkwd    record    stride                                    
+              kB  reclen    write  rewrite    read    reread    read     write     read   rewrite      read   fwrite frewrite    fread  freread
+          102400       4   874704  1988778  6146816  4040571  3823048  2152660  4812448   5876912   4190047  2091636  2484592  5301575  5126909
+
+iozone test complete.
+
+
+-I     Use  DIRECT  IO  if possible for all file operations. Tells the filesystem that all operations to the file are to bypass the
+              buffer cache and go directly to disk. (not available on all platforms)
+
+usuario@debian:~/iozone3_489$ src/current/iozone -I -s 100m
+	Iozone: Performance Test of File I/O
+	        Version $Revision: 3.488 $
+		Compiled for 64 bit mode.
+		Build: linux 
+
+	Contributors:William Norcott, Don Capps, Isom Crawford, Kirby Collins
+	             Al Slater, Scott Rhine, Mike Wisner, Ken Goss
+	             Steve Landherr, Brad Smith, Mark Kelly, Dr. Alain CYR,
+	             Randy Dunlap, Mark Montague, Dan Million, Gavin Brebner,
+	             Jean-Marc Zucconi, Jeff Blomberg, Benny Halevy, Dave Boone,
+	             Erik Habbinga, Kris Strecker, Walter Wong, Joshua Root,
+	             Fabrice Bacchella, Zhenghua Xue, Qin Li, Darren Sawyer,
+	             Vangel Bojaxhi, Ben England, Vikentsi Lapa,
+	             Alexey Skidanov, Sudhir Kumar.
+
+	Run began: Sun Mar 12 17:05:31 2023
+
+	O_DIRECT feature enabled
+	File size set to 102400 kB
+	Command line used: src/current/iozone -I -s 100m
+	Output is in kBytes/sec
+	Time Resolution = 0.000027 seconds.
+	Processor cache size set to 1024 kBytes.
+	Processor cache line size set to 32 bytes.
+	File stride size set to 17 * record size.
+                                                              random    random     bkwd    record    stride                                    
+              kB  reclen    write  rewrite    read    reread    read     write     read   rewrite      read   fwrite frewrite    fread  freread
+          102400       4     3177     3216     3035     2993      317      813     2435      3314      1784  1347441  3053531  5953180  5023544
+
+iozone test complete.
+
