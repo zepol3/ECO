@@ -76,3 +76,40 @@ usuario@debian:~/iozone3_489$ src/current/iozone -I -s 100m
 
 iozone test complete.
 
+
+
+
+usuario@debian:~/iozone3_489$ src/current/iozone -I -s 100m -r 16k
+	Iozone: Performance Test of File I/O
+	        Version $Revision: 3.488 $
+		Compiled for 64 bit mode.
+		Build: linux 
+
+	Contributors:William Norcott, Don Capps, Isom Crawford, Kirby Collins
+	             Al Slater, Scott Rhine, Mike Wisner, Ken Goss
+	             Steve Landherr, Brad Smith, Mark Kelly, Dr. Alain CYR,
+	             Randy Dunlap, Mark Montague, Dan Million, Gavin Brebner,
+	             Jean-Marc Zucconi, Jeff Blomberg, Benny Halevy, Dave Boone,
+	             Erik Habbinga, Kris Strecker, Walter Wong, Joshua Root,
+	             Fabrice Bacchella, Zhenghua Xue, Qin Li, Darren Sawyer,
+	             Vangel Bojaxhi, Ben England, Vikentsi Lapa,
+	             Alexey Skidanov, Sudhir Kumar.
+
+	Run began: Sun Mar 12 17:19:39 2023
+
+	O_DIRECT feature enabled
+	File size set to 102400 kB
+	Record Size 16 kB
+	Command line used: src/current/iozone -I -s 100m -r 16k
+	Output is in kBytes/sec
+	Time Resolution = 0.000042 seconds.
+	Processor cache size set to 1024 kBytes.
+	Processor cache line size set to 32 bytes.
+	File stride size set to 17 * record size.
+                                                              random    random     bkwd    record    stride                                    
+              kB  reclen    write  rewrite    read    reread    read     write     read   rewrite      read   fwrite frewrite    fread  freread
+          102400      16    13096    13469    11376    12392     1258     2743     4682     14009      2819  1829484  2478931  7287777  6226048
+
+iozone test complete.
+
+
