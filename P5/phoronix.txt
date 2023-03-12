@@ -1,0 +1,39 @@
+BYTE Unix Benchmark 3.6
+
+Run Identifier:       pts/byte-1.2.2              
+Profile Version:      1.2.2                       
+Maintainer:           Michael Larabel             
+Test Type:            Processor                   
+Software Type:        Utility                     
+License Type:         Free                        
+Test Status:          Verified                    
+Supported Platforms:  Linux, Solaris, MacOSX, BSD 
+Project Web-Site:                                 
+Estimated Run-Time:   381 Seconds                 
+Download Size:        0.17 MB                     
+Environment Size:     1.0 MB                      
+
+Description: This is a test of BYTE.
+
+
+OpenBenchmarking.org Test Profile: https://openbenchmarking.org/test/pts/byte-1.2.2
+
+
+Test Installed: No
+
+Software Dependencies:
+- Compiler / Development Libraries
+
+OpenBenchmarking.org Change History
+v1.2.2 - 27 September 2020
+Drop options/tests that do not work well on modern platforms.
+v1.2.1 - 4 August 2016
+Add SHA256 to downloads.xml as test
+v1.2.0 - 12 March 2012
+Ensure byte always honors CFLAGS.
+v1.1.0 - 6 December 2010
+Initial import into OpenBenchmarking.org
+
+Test Suites Containing This Test
+pts/single-threaded Single-Threaded 
+
