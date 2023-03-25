@@ -175,3 +175,244 @@ Percentage of the requests served within a certain time (ms)
   98%    622
   99%    705
  100%   1284 (longest request)
+
+
+
+
+
+
+ usuario@debian:~$  ab -n 10000 -c 50 -r http://192.168.0.2/
+This is ApacheBench, Version 2.3 <$Revision: 655654 $>
+Copyright 1996 Adam Twiss, Zeus Technology Ltd, http://www.zeustech.net/
+Licensed to The Apache Software Foundation, http://www.apache.org/
+
+Benchmarking 192.168.0.2 (be patient)
+Completed 1000 requests
+Completed 2000 requests
+Completed 3000 requests
+Completed 4000 requests
+Completed 5000 requests
+Completed 6000 requests
+Completed 7000 requests
+Completed 8000 requests
+Completed 9000 requests
+Completed 10000 requests
+Finished 10000 requests
+
+
+Server Software:        Apache/2.2.22
+Server Hostname:        192.168.0.2
+Server Port:            80
+
+Document Path:          /
+Document Length:        177 bytes
+
+Concurrency Level:      50
+Time taken for tests:   71.132 seconds
+Complete requests:      10000
+Failed requests:        0
+Write errors:           0
+Total transferred:      4530000 bytes
+HTML transferred:       1770000 bytes
+Requests per second:    140.58 [#/sec] (mean)
+Time per request:       355.658 [ms] (mean)
+Time per request:       7.113 [ms] (mean, across all concurrent requests)
+Transfer rate:          62.19 [Kbytes/sec] received
+
+Connection Times (ms)
+              min  mean[+/-sd] median   max
+Connect:        1   27  58.0      9    1013
+Processing:     3  327 290.1    255    2126
+Waiting:        0  187 212.1    110    2018
+Total:          5  353 299.0    286    2210
+
+Percentage of the requests served within a certain time (ms)
+  50%    286
+  66%    408
+  75%    508
+  80%    573
+  90%    756
+  95%    936
+  98%   1158
+  99%   1346
+ 100%   2210 (longest request)
+
+
+
+usuario@debian:~$ ab -n 10000 -c 100 -r http://192.168.0.2/
+This is ApacheBench, Version 2.3 <$Revision: 655654 $>
+Copyright 1996 Adam Twiss, Zeus Technology Ltd, http://www.zeustech.net/
+Licensed to The Apache Software Foundation, http://www.apache.org/
+
+Benchmarking 192.168.0.2 (be patient)
+Completed 1000 requests
+Completed 2000 requests
+Completed 3000 requests
+Completed 4000 requests
+Completed 5000 requests
+Completed 6000 requests
+Completed 7000 requests
+Completed 8000 requests
+Completed 9000 requests
+Completed 10000 requests
+Finished 10000 requests
+
+
+Server Software:        Apache/2.2.22
+Server Hostname:        192.168.0.2
+Server Port:            80
+
+Document Path:          /
+Document Length:        177 bytes
+
+Concurrency Level:      100
+Time taken for tests:   67.073 seconds
+Complete requests:      10000
+Failed requests:        0
+Write errors:           0
+Total transferred:      4530000 bytes
+HTML transferred:       1770000 bytes
+Requests per second:    149.09 [#/sec] (mean)
+Time per request:       670.734 [ms] (mean)
+Time per request:       6.707 [ms] (mean, across all concurrent requests)
+Transfer rate:          65.96 [Kbytes/sec] received
+
+Connection Times (ms)
+              min  mean[+/-sd] median   max
+Connect:        1   49  87.4     20    1147
+Processing:     3  618 449.2    536    3790
+Waiting:        1  355 345.8    245    3775
+Total:          5  667 458.7    586    3794
+
+Percentage of the requests served within a certain time (ms)
+  50%    586
+  66%    770
+  75%    928
+  80%   1022
+  90%   1282
+  95%   1542
+  98%   1826
+  99%   2073
+ 100%   3794 (longest request)
+
+
+
+
+
+
+
+usuario@debian:~$ ab -n 10000 -c 250 -r http://192.168.0.2/
+This is ApacheBench, Version 2.3 <$Revision: 655654 $>
+Copyright 1996 Adam Twiss, Zeus Technology Ltd, http://www.zeustech.net/
+Licensed to The Apache Software Foundation, http://www.apache.org/
+
+Benchmarking 192.168.0.2 (be patient)
+Completed 1000 requests
+Completed 2000 requests
+Completed 3000 requests
+Completed 4000 requests
+Completed 5000 requests
+Completed 6000 requests
+Completed 7000 requests
+Completed 8000 requests
+Completed 9000 requests
+Completed 10000 requests
+Finished 10000 requests
+
+
+Server Software:        Apache/2.2.22
+Server Hostname:        192.168.0.2
+Server Port:            80
+
+Document Path:          /
+Document Length:        177 bytes
+
+Concurrency Level:      250
+Time taken for tests:   68.005 seconds
+Complete requests:      10000
+Failed requests:        0
+Write errors:           0
+Total transferred:      4530000 bytes
+HTML transferred:       1770000 bytes
+Requests per second:    147.05 [#/sec] (mean)
+Time per request:       1700.131 [ms] (mean)
+Time per request:       6.801 [ms] (mean, across all concurrent requests)
+Transfer rate:          65.05 [Kbytes/sec] received
+
+Connection Times (ms)
+              min  mean[+/-sd] median   max
+Connect:        1  181 367.0     56    7076
+Processing:   231 1505 595.6   1425    9913
+Waiting:      229 1124 493.7   1022    9905
+Total:        234 1686 694.9   1563   10211
+
+Percentage of the requests served within a certain time (ms)
+  50%   1563
+  66%   1851
+  75%   2050
+  80%   2189
+  90%   2579
+  95%   2960
+  98%   3459
+  99%   3741
+ 100%  10211 (longest request)
+
+
+
+
+usuario@debian:~$ ab -n 10000 -c 500 -r http://192.168.0.2/
+This is ApacheBench, Version 2.3 <$Revision: 655654 $>
+Copyright 1996 Adam Twiss, Zeus Technology Ltd, http://www.zeustech.net/
+Licensed to The Apache Software Foundation, http://www.apache.org/
+
+Benchmarking 192.168.0.2 (be patient)
+Completed 1000 requests
+Completed 2000 requests
+Completed 3000 requests
+Completed 4000 requests
+Completed 5000 requests
+Completed 6000 requests
+Completed 7000 requests
+Completed 8000 requests
+Completed 9000 requests
+Completed 10000 requests
+Finished 10000 requests
+
+
+Server Software:        Apache/2.2.22
+Server Hostname:        192.168.0.2
+Server Port:            80
+
+Document Path:          /
+Document Length:        177 bytes
+
+Concurrency Level:      500
+Time taken for tests:   108.396 seconds
+Complete requests:      10000
+Failed requests:        271
+   (Connect: 0, Receive: 90, Length: 91, Exceptions: 90)
+Write errors:           0
+Total transferred:      4488777 bytes
+HTML transferred:       1753893 bytes
+Requests per second:    92.25 [#/sec] (mean)
+Time per request:       5419.789 [ms] (mean)
+Time per request:       10.840 [ms] (mean, across all concurrent requests)
+Transfer rate:          40.44 [Kbytes/sec] received
+
+Connection Times (ms)
+              min  mean[+/-sd] median   max
+Connect:        0  858 2024.2     93   31221
+Processing:   482 2368 4246.3   1700  107447
+Waiting:        0 1828 2775.7   1336   57536
+Total:        516 3226 4686.1   2250  108103
+
+Percentage of the requests served within a certain time (ms)
+  50%   2250
+  66%   2826
+  75%   3328
+  80%   3832
+  90%   5263
+  95%   8168
+  98%  13787
+  99%  16870
+ 100%  108103 (longest request)
